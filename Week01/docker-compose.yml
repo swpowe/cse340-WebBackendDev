@@ -6,8 +6,8 @@ services:
             - "80:80"
         volumes:
             - ./nginx.conf:/etc/nginx/conf.d/nginx.conf
-            - ./app:/app
+            - ./phpmotors:/phpmotors
         php:
           image: php:fpm
           volumes: 
-            - ./app:/app
+            - ./phpmotors:/phpmotors
