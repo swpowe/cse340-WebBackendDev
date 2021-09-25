@@ -11,7 +11,7 @@
 </head>
 <body>
     <?php
-        require('../template.php')
+        require('../home.php')
     ?>
 </body>
 </html>
