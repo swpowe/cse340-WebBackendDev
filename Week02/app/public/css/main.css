@@ -8,7 +8,7 @@ html,
 body,
 nav {
   font-size: 0.65rem;
-  min-width: 10vw;
+  min-width: 100%;
 }
 
 header {
@@ -24,7 +24,7 @@ header img {
   width: 45%;
 }
 
-header h3 {
+header h2 {
   padding-top: 20px;
   position: relative;
   bottom: 10px;
@@ -32,7 +32,7 @@ header h3 {
 
 nav {
   background-color: gray;
-  color: white;
+  color: black;
   min-width: 100%;
   padding: 10px;
 }
@@ -48,7 +48,7 @@ nav ul li {
 
 a {
   border-radius: 5px;
-  color: white;
+  color: black;
   font-size: 4vw;
   padding: 0.78vw 0.825vw;
   text-decoration: none;
@@ -112,7 +112,7 @@ hr {
   box-shadow: 2px 2px 5px black;
 }
 
-h3 {
+h2 {
   font-size: 1.5rem;
   padding-bottom: 5px;
 }
@@ -133,7 +133,7 @@ h3 {
   margin: 0 auto;
 }
 
-.upgrades h3 {
+.upgrades h2 {
   font-size: 1.5rem;
   padding-top: 10px;
 }
@@ -169,14 +169,15 @@ footer {
 }
 
 @media screen and (min-width: 1000px) {
+
   html,
   body,
   nav {
     font-size: 0.65rem;
-    min-width: 10vw;
+    min-width: 100vw;
   }
 
-  header h3 {
+  header h2 {
     font-size: 2.5rem;
   }
 
@@ -192,7 +193,7 @@ footer {
     font-size: 4rem;
   }
 
-  .about h3 {
+  .about h2 {
     font-size: 3rem;
   }
 
@@ -224,7 +225,7 @@ footer {
     padding: 20px;
   }
 
-  .reviews h3 {
+  .reviews h2 {
     font-size: 4rem;
   }
 
@@ -238,12 +239,12 @@ footer {
     padding: 20px;
   }
 
-  .upgrades h3 {
+  .upgrades h2 {
     font-size: 4rem;
     padding-top: 0;
   }
 
-  .lower-portion h3 {
+  .lower-portion h2 {
     padding-bottom: 40px;
   }
 
@@ -259,6 +260,10 @@ footer {
     min-width: 100vw;
   }
 
+  h3 {
+    font-size: 3rem;
+  }
+
   main img {
     max-width: 100%;
   }
@@ -268,5 +273,9 @@ footer {
     position: relative;
     bottom: 650px;
     right: 560px;
+  }
+
+  body ~ h2 {
+    font-size: 3rem;
   }
 }
