@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 services:
     web:
         image: nginx:latest
@@ -6,25 +6,20 @@ services:
             - "80:80"
         volumes:
             - ./nginx.conf:/etc/nginx/conf.d/nginx.conf
-            - ./app:/app
-            # - .:/app
-        links:
-            - php
+            - ./phpmotors:/phpmotors
     php:
         build:
             context: .
             dockerfile: PHP.Dockerfile
         volumes:
-            - ./app:/app
-        links:
-            - mysql
+            - ./phpmotors:/phpmotors
     mysql:
         image: mariadb:latest
         environment:
-            MYSQL_ROOT_PASSWORD: 'secret'
-            MYSQL_USER: 'tutorial'
-            MYSQL_PASSWORD: 'secret'
-            MYSQL_DATABASE: 'tutorial'
+            MYSQL_ROOT_PASSWORD: "secret"
+            MYSQL_USER: "tutorial"
+            MYSQL_PASSWORD: "secret"
+            MYSQL_DATABASE: "tutorial"
         volumes:
             - mysqldata:/var/lib/mysql
         ports:
