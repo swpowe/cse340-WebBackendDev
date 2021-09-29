@@ -10,9 +10,13 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <?php
+    <!-- <?php
         require('../home.php')
-    ?>
+    ?> -->
+    <h1>
+    <?php 
+        require('../utilities/connections.php')
+    ?></h1>
 </body>
 </html>
 

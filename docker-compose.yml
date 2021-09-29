@@ -15,6 +15,7 @@ services:
             - ./phpmotors:/phpmotors
     mysql:
         image: mariadb:latest
+        # image: mysql:latest
         environment:
             MYSQL_ROOT_PASSWORD: "secret"
             MYSQL_USER: "tutorial"
