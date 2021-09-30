@@ -4,9 +4,9 @@
 <?php
     require '../components/nav.php'
 ?>
-<?php
+<!-- <?php
     require '../components/main.php'
-?>
+?> -->
 <?php
     require '../components/footer.php'
 ?>

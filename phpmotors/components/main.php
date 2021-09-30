@@ -44,5 +44,4 @@
       </div>
     </section>
   </div>
-  <hr />
 </main>

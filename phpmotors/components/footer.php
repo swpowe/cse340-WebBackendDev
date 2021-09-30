@@ -1,4 +1,5 @@
-    <footer>
+   <hr />
+   <footer>
         <p>© PHP Motors, All rights reserverd.</p>
         <p>
             All images used are believed to be in "Fair Use." Please notify the

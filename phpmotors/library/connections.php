@@ -3,7 +3,7 @@
 
 function phpmotorsConnect()
 {
-    $server = 'mysql';
+    $server = 'mysql-';
     $dbname = 'tutorial';
     $username = 'tutorial';
     $password = 'secret';
@@ -19,9 +19,9 @@ function phpmotorsConnect()
         return $link;
     } catch (PDOException $e) {
         // echo "It didn't work, error: " .$e->getMessage();
-
-        // header('Location: /phpmotors/components/error500.php');
-        require "/phpmotors/components/error500.php";
+        require '../view/error500.php';
+        // header('Location: .../view/error500.php');
+        // require '../view/error500.php';
         exit;
     }
 }

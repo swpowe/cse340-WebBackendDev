@@ -70,10 +70,15 @@ main img {
   width: 90%;
 }
 
+.error-msg {
+  color: red;
+  padding: 25px;
+}
+/* 
 main,
 hr {
   margin-top: 15px;
-}
+} */
 
 .about {
   color: blue;
