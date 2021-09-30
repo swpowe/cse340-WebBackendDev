@@ -1,23 +1,29 @@
 <?php
 // Proxy connections to phpmotors database
 
-function phpmotorsConnect() {
-$server = 'mysql';
-$dbname = 'tutorial';
-$username = 'tutorial';
-$password = 'secret';
+function phpmotorsConnect()
+{
+    $server = 'mysql';
+    $dbname = 'tutorial';
+    $username = 'tutorial';
+    $password = 'secret';
 
-$dsn = "mysql:host=$server:3306;dbname=$dbname";
-$options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
+    $dsn = "mysql:host=$server:3306;dbname=$dbname";
+    $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
 
-try{
-    $link = new PDO($dsn, $username, $password, $options);
-    if(is_object($link)){
-        echo 'It Worked!';
+    try {
+        $link = new PDO($dsn, $username, $password, $options);
+        // if (is_object($link)) {
+        //     echo 'It Worked!';
+        // }
+        return $link;
+    } catch (PDOException $e) {
+        // echo "It didn't work, error: " .$e->getMessage();
+
+        // header('Location: /phpmotors/components/error500.php');
+        require "/phpmotors/components/error500.php";
+        exit;
     }
-}catch(PDOException $e) {
-    echo "It didn't work, error: " .$e->getMessage();
-}
 }
 
-phpmotorsConnect();
+// phpmotorsConnect(); // testing only
