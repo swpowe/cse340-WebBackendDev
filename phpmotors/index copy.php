@@ -1,5 +1,5 @@
 <?php require '../library/connections.php';
-    phpmotorsConnect();
+phpmotorsConnect();
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +17,18 @@
 
 
 <body>
-    <?php require '../home.php' ?>
+    <?php
+    require '/components/header.php'
+    ?>
+    <?php
+    require '/components/nav.php'
+    ?>
+    <?php
+    require '/components/main.php'
+    ?>
+    <?php
+    require '/components/footer.php'
+    ?>
 </body>
 
 </html>
