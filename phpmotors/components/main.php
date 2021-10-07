@@ -8,7 +8,7 @@
       <li>Fuzzy dice!</li>
     </ul>
 
-    <img src="public/images/delorean.jpg" alt="car image" />
+    <img src="images/delorean.jpg" alt="" />
     <div class="buy-now">
       <button>Own Today</button>
     </div>
@@ -30,16 +30,16 @@
       <h2>Delorean Upgrades</h2>
       <div class="upgrade-options">
         <button>
-          <img src="public/images/upgrades/flux-cap.png" alt="upgrade option flux capacitor" /><br>Flux Capacitor
+          <img src="images/upgrades/flux-cap.png" alt="upgrade option flux capacitor" /><br>Flux Capacitor
         </button>
         <button>
-          <img src="public/images/upgrades/flame.jpg" alt="upgrade option flame decals" /><br>Flame Decals
+          <img src="images/upgrades/flame.jpg" alt="upgrade option flame decals" /><br>Flame Decals
         </button>
         <button>
-          <img src="public/images/upgrades/bumper_sticker.jpg" alt="upgrade option bumper sticker" /><br>Bumper Stickers
+          <img src="images/upgrades/bumper_sticker.jpg" alt="upgrade option bumper sticker" /><br>Bumper Stickers
         </button>
         <button>
-          <img src="public/images/upgrades/hub-cap.jpg" alt="upgrade option hub caps" /><br>Hub Caps
+          <img src="images/upgrades/hub-cap.jpg" alt="upgrade option hub caps" /><br>Hub Caps
         </button>
       </div>
     </section>

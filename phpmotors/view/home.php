@@ -1,5 +1,6 @@
-<?php require '../library/connections.php';
-phpmotorsConnect();
+<?php
+    require 'library/connections.php';
+    phpmotorsConnect();
 ?>
 
 <!DOCTYPE html>
@@ -18,16 +19,16 @@ phpmotorsConnect();
 
 <body>
     <?php
-    require '/components/header.php'
+    require 'components/header.php'
     ?>
     <?php
-    require '/components/nav.php'
+    require 'components/nav.php'
     ?>
     <?php
-    require '/components/main.php'
+    require 'components/main.php'
     ?>
     <?php
-    require '/components/footer.php'
+    require 'components/footer.php'
     ?>
 </body>
 
