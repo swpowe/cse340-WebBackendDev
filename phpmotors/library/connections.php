@@ -20,6 +20,7 @@ function phpmotorsConnect()
         return $link;
     } catch (PDOException $e) {
         header('Location: view/error500.php');
+        // include (__DIR__ . '/../view/error500.php');
         exit;
     }
 }

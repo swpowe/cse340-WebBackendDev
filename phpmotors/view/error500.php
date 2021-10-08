@@ -13,7 +13,6 @@
 
 <body>
     <?php
-    // require __DIR__ + '../components/header.php';
     require '../components/header.php';
     ?>
     <?php
