@@ -54,7 +54,7 @@ a {
   text-decoration: none;
 }
 
-a:hover {
+nav a:hover {
   color: black;
   background-color: #4c96d7;
   text-decoration: none;
@@ -118,7 +118,7 @@ hr {
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   padding-bottom: 5px;
 }
 
@@ -171,6 +171,38 @@ footer {
   align-items: center;
   margin: 15px 10px;
   font-size: 1rem;
+}
+
+/* #region Form Styles */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+  font-size: 1.25rem;
+  /* margin-top: 5px; */
+  margin-bottom: 2px;
+
+}
+
+form input {
+  margin-bottom: 8px;
+  padding: 5px;
+}
+
+form button {
+  margin: 5px 0;
+  max-width: 25%;
+  padding: 5px;
+}
+
+/* #endreion */
+
+.login-signup-link {
+  color: #0f538f;
+  font-size: 1.25rem;
+  padding: 5px;
 }
 
 @media screen and (min-width: 1000px) {

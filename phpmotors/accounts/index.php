@@ -1,10 +1,10 @@
 <?php
-// This is the main controller
+// This is the Accounts Controller
 
 // Get the database connection file
-require_once 'library/connections.php';
+require_once '../library/connections.php';
 // Get the PHP Motors model for use as needed
-require_once 'model/main-model.php';
+require_once '../model/main-model.php';
 
 // Get the array of classifications
 $classifications = getClassifications();
@@ -29,15 +29,13 @@ if ($action == NULL) {
 }
 
 switch ($action) {
-    case 'template':
-        include 'view/template.php';
+    case 'login':
+        include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/view/login.php';
         break;
-    case 'login': // TESTING ONLY
-        include 'view/login.php';
-        break;    
-    
+    case 'registration':
+        include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/view/registration.php';
+        break;
     default:
-        include 'view/home.php';
 }
 
 ?>

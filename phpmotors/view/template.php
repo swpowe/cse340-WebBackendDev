@@ -17,8 +17,11 @@
     require 'components/header.php'
     ?>
     <?php
-    require 'components/nav.php'
+    // require 'components/nav.php'
     ?>
+    <nav>
+        <?php echo $navList; ?>
+    </nav>
     <?php
     require 'components/footer.php'
     ?>

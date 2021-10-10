@@ -1,6 +1,6 @@
 <?php
-    require 'library/connections.php';
-    phpmotorsConnect();
+// require 'library/connections.php';
+// phpmotorsConnect();
 ?>
 
 <!DOCTYPE html>
@@ -14,6 +14,8 @@
     <title>Php Motors Homepage | Where parts are our game!</title>
     <link rel="stylesheet" href="css/main.css">
 
+
+
 </head>
 
 
@@ -22,8 +24,11 @@
     require 'components/header.php'
     ?>
     <?php
-    require 'components/nav.php'
+    // require 'components/nav.php'
     ?>
+    <nav>
+        <?php echo $navList; ?>
+    </nav>
     <?php
     require 'components/main.php'
     ?>
