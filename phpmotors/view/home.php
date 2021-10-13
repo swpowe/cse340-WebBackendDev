@@ -1,8 +1,3 @@
-<?php
-// require 'library/connections.php';
-// phpmotorsConnect();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 

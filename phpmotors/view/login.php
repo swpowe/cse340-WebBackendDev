@@ -20,7 +20,13 @@
         <?php echo $navList; ?>
     </nav>
     <main>
-        <form action="login_form.php" method="post">
+        <?php
+            if (isset($message)) {
+                echo $message;
+            }
+        ?>
+
+        <form action="/phpmotors/accounts/index.php" method="post">
             <label for="email-input">Email Address:</label>
             <input type="text" id="email-input" name="email-input" placeholder="email address" />
             <label for="password-input">Password:</label>

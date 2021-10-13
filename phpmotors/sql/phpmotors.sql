@@ -276,26 +276,26 @@ COMMIT;
 --
 -- Table structure for table `clients`
 --
--- DROP TABLE IF EXISTS `clients`;
--- CREATE TABLE `clients` (
---   `clientId` int UNSIGNED NOT NULL,
---   `clientFirstname` varchar(15) NOT NULL,
---   `clientLastname` varchar(25) NOT NULL,
---   `clientEmail` varchar(40) NOT NULL,
---   `clientPassword` varchar(255) NOT NULL,
---   `clientLevel` enum('1','2','3') NOT NULL DEFAULT '1',
---   `comment` text DEFAULT NULL
--- ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `clients`;
+CREATE TABLE `clients` (
+  `clientId` int UNSIGNED NOT NULL,
+  `clientFirstname` varchar(15) NOT NULL,
+  `clientLastname` varchar(25) NOT NULL,
+  `clientEmail` varchar(40) NOT NULL,
+  `clientPassword` varchar(255) NOT NULL,
+  `clientLevel` enum('1','2','3') NOT NULL DEFAULT '1',
+  `comment` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 --
 -- Indexes for table `clients`
 --
--- ALTER TABLE `clients`
---   ADD PRIMARY KEY (`clientId`);
+ALTER TABLE `clients`
+  ADD PRIMARY KEY (`clientId`);
 --
 -- AUTO_INCREMENT for table `clients`
 --
--- ALTER TABLE `clients`
--- MODIFY `clientId` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+ALTER TABLE `clients`
+MODIFY `clientId` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */
 ;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */
