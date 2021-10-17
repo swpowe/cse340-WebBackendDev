@@ -1,3 +1,23 @@
+<?php
+
+// Get the database connection file
+require_once $_SERVER['DOCUMENT_ROOT']. '/phpmotors/library/connections.php';
+// Get the PHP Motors model for use as needed
+require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/model/main-model.php';
+
+// Get the array of classifications
+$classifications = getClassifications();
+
+// Build a navigation bar using the $classifications array
+// $dropdownItems = '<option>';
+foreach ($classifications as $classification) {
+ $dropdownItems .= "<option>$classification[0]</option>";
+}
+// $dropdownItems .= '</option>';
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +27,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Php Motors Homepage | Add a new vehicle.</title>
-    <!-- <link rel="stylesheet" href="css/main.css"> -->
+    <link rel="stylesheet" href="/phpmotors/css/main.css">
 
 </head>
 
@@ -31,7 +51,10 @@
             <select name="vehicle-classification" id="vehicle-classification">
                 Choose Classification
                 <option value="" disabled selected>Choose Car Classification</option>
+                <!-- for each -->
                 <option>test</option>
+                <option>test 2</option>
+                <?php echo $dropdownItems ?>
             </select>
             <label for="vehicle-make">Make</label>
             <input type="text" id="vehicle-make" name="vehicle-make" />

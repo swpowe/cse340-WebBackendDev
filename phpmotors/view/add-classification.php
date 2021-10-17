@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Php Motors Homepage | Create new classification.</title>
-    <!-- <link rel="stylesheet" href="css/main.css"> -->
+    <link rel="stylesheet" href="/phpmotors/css/main.css">
 
 </head>
 
