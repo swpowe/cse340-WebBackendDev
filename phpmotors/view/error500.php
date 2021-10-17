@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Php Motors Homepage | Where parts are our game!</title>
+    <title>Php Motors Homepage | Error page.</title>
     <link rel="stylesheet" href="../css/main.css">
 </head>
 

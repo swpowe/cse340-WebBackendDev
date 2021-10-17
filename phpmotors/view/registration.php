@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Php Motors Homepage | Where parts are our game!</title>
+    <title>Php Motors Homepage | Create new account.</title>
     <link rel="stylesheet" href="/phpmotors/css/main.css">
 
 </head>
@@ -30,7 +30,7 @@
             <label for="firstName-input">First Name:</label>
             <input type="text" id="firstName-input" name="clientFirstname" placeholder="First Name" required />
             <label for="lastName-input">Last Name:</label>
-            <input type="lastName" id="lastName-input" name="clientLastname" placeholder="lastName" required />
+            <input type="text" id="lastName-input" name="clientLastname" placeholder="lastName" required />
             <label for="email-input">Email Address:</label>
             <input type="text" id="email-input" name="clientEmail" placeholder="email address" />
             <label for="password-input">Password:</label>
