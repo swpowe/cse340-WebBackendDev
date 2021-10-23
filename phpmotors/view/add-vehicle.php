@@ -7,11 +7,11 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/model/main-model.php';
 
 // Get the array of classifications
 $classifications = getClassifications();
-
+// print_r($classifications); //!! Testing ONLY
 // Build a navigation bar using the $classifications array
 // $dropdownItems = '<option>';
 foreach ($classifications as $classification) {
- $dropdownItems .= "<option>$classification[0]</option>";
+ $dropdownItems .= "<option value='$classification[1]'>$classification[0]</option>";
 }
 // $dropdownItems .= '</option>';
 
@@ -41,7 +41,7 @@ foreach ($classifications as $classification) {
     </nav>
     <main>
         <h2>Add Vehicle</h2>
-        <h3>*Note all Fields are Required</h3>
+        <h2>*Note all Fields are Required</h2>
         <?php
         if (isset($message)) {
             echo $message;
@@ -49,27 +49,25 @@ foreach ($classifications as $classification) {
         ?>
         <form action="/phpmotors/vehicles/index.php" method="post">
             <select name="vehicle-classification" id="vehicle-classification">
-                Choose Classification
                 <option value="" disabled selected>Choose Car Classification</option>
-                <!-- for each -->
-                <option>test</option>
-                <option>test 2</option>
                 <?php echo $dropdownItems ?>
             </select>
             <label for="vehicle-make">Make</label>
-            <input type="text" id="vehicle-make" name="vehicle-make" />
-            <label for="vehicle-make">Model</label>
-            <input type="text" id="vehicle-make" name="vehicle-make" />
-            <label for="vehicle-make">Description</label>
-            <textarea name="vehicle-desc" id="vehicle-desc" cols="60" rows="5" placeholder="Please enter a vehicle description"></textarea>
-            <label for="vehicle-make">Image Path</label>
-            <input type="text" id="vehicle-make" name="vehicle-make" />
-            <label for="vehicle-make">Price</label>
-            <input type="text" id="vehicle-make" name="vehicle-make" />
-            <label for="vehicle-make"># In Stock</label>
-            <input type="text" id="vehicle-make" name="vehicle-make" />
-            <label for="vehicle-make">Color</label>
-            <input type="text" id="vehicle-make" name="vehicle-make" />
+            <input type="text" id="vehicle-make" name="clientMake" />
+            <label for="vehicle-model">Model</label>
+            <input type="text" id="vehicle-model" name="clientModel" />
+            <label for="vehicle-desc">Description</label>
+            <textarea name="clientDescription" id="vehicle-desc" cols="60" rows="5" placeholder="Please enter a vehicle description"></textarea>
+            <label for="vehicle-image-path">Image Path</label>
+            <input type="text" id="vehicle-image-path" name="clientImage" />
+            <label for="vehicle-thumb-path">Thumbnail Path</label>
+            <input type="text" id="vehicle-thumb-path" name="clientThumbnail" />
+            <label for="vehicle-price">Price</label>
+            <input type="text" id="vehicle-price" name="clientPrice" />
+            <label for="vehicle-stock"># In Stock</label>
+            <input type="text" id="vehicle-stock" name="clientStock" />
+            <label for="vehicle-color">Color</label>
+            <input type="text" id="vehicle-color" name="clientColor" />
 
             <input type="submit" value="Add Vehicle" />
 

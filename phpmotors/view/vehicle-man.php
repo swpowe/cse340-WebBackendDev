@@ -7,23 +7,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Php Motors Homepage | Vehicles Manager.</title>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="/phpmotors/css/main.css">
 
 </head>
 
 
 <body>
     <?php
-    require 'components/header.php'
-    ?>
-    <?php
-    // require 'components/nav.php'
+    require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/components/header.php'
     ?>
     <nav>
         <?php echo $navList; ?>
     </nav>
+    <main>
+        <h1>Vehicle Management</h1>
+        <p><a href="/phpmotors/vehicles?action=add-vehicle-page">Add Vehicle Page</a></p>
+        <p><a href="/phpmotors/vehicles?action=add-classification-page">Add Classification Page</a></p>
+    </main>
     <?php
-    require 'components/footer.php'
+    require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/components/footer.php'
     ?>
 </body>
 

@@ -46,7 +46,7 @@ nav ul li {
   list-style: none;
 }
 
-a {
+nav a {
   border-radius: 5px;
   color: black;
   font-size: 4vw;
@@ -177,6 +177,7 @@ footer {
 form {
   display: flex;
   flex-direction: column;
+  max-width: 300px;
 }
 
 form label {

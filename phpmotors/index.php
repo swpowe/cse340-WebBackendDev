@@ -39,6 +39,3 @@ switch ($action) {
     default:
         include 'view/home.php';
 }
-
-?>
-

@@ -97,5 +97,5 @@ switch ($action) {
         //TODO turn parts of this into functions to be called rather then repeat code
         break;
     default:
-        echo 'Default';
+        include '../view/vehicle-man.php';
 }
