@@ -48,7 +48,7 @@ foreach ($classifications as $classification) {
         }
         ?>
         <form action="/phpmotors/vehicles/index.php" method="post">
-            <select name="vehicle-classification" id="vehicle-classification">
+            <select name="classificationId" id="vehicle-classification">
                 <option value="" disabled selected>Choose Car Classification</option>
                 <?php echo $dropdownItems ?>
             </select>
@@ -63,9 +63,9 @@ foreach ($classifications as $classification) {
             <label for="vehicle-thumb-path">Thumbnail Path</label>
             <input type="text" id="vehicle-thumb-path" name="clientThumbnail" />
             <label for="vehicle-price">Price</label>
-            <input type="text" id="vehicle-price" name="clientPrice" />
+            <input type="number" step="0.01" id="vehicle-price" name="clientPrice" />
             <label for="vehicle-stock"># In Stock</label>
-            <input type="text" id="vehicle-stock" name="clientStock" />
+            <input type="number" id="vehicle-stock" name="clientStock" />
             <label for="vehicle-color">Color</label>
             <input type="text" id="vehicle-color" name="clientColor" />
 

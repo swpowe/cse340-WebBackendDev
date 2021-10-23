@@ -67,7 +67,7 @@ main {
 }
 
 main img {
-  width: 90%;
+  width: 80%;
 }
 
 .error-msg {
@@ -110,7 +110,7 @@ hr {
 }
 
 .buy-now button {
-  border-radius: 0px;
+  border-radius: 5px;
   background-color: #4c96d7;
   padding: 10px 30px;
   border: none;
@@ -184,7 +184,6 @@ form label {
   font-size: 1.25rem;
   /* margin-top: 5px; */
   margin-bottom: 2px;
-
 }
 
 form input {
@@ -198,6 +197,19 @@ form button {
   padding: 5px;
 }
 
+.status-good {
+  background-color: #008000;
+  color: white;
+  max-width: 300px;
+  margin-bottom: 10px;
+}
+
+.status-error {
+  background-color: red;
+  max-width: 300px;
+  margin-bottom: 10px;
+}
+
 /* #endreion */
 
 .login-signup-link {
@@ -207,7 +219,6 @@ form button {
 }
 
 @media screen and (min-width: 1000px) {
-
   html,
   body,
   nav {
@@ -242,14 +253,14 @@ form button {
 
   .about img {
     position: relative;
-    width: 120%;
+    width: 100%;
     right: 60px;
   }
 
   .buy-now button {
     font-size: 3rem;
     position: relative;
-    bottom: 500px;
+    bottom: 400px;
     right: 360px;
   }
 

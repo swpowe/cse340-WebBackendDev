@@ -37,18 +37,47 @@ switch ($action) {
         include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/add-classification.php';
         break;
     case 'add-vehicle':
-        // include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/view/login.php';
-        echo 'Add Vehicle Page';
+        $clientMake = filter_input(INPUT_POST, 'clientMake');
+        $clientModel = filter_input(INPUT_POST, 'clientModel');
+        $clientDescription = filter_input(INPUT_POST, 'clientDescription');
+        $clientImage = filter_input(INPUT_POST, 'clientImage');
+        $clientThumbnail = filter_input(INPUT_POST, 'clientThumbnail');
+        $clientPrice = filter_input(INPUT_POST, 'clientPrice');
+        $clientPrice = filter_var($clientPrice, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+        $clientPrice = filter_var($clientPrice, FILTER_VALIDATE_FLOAT);
+        $clientStock = filter_input(INPUT_POST, 'clientStock');
+        $clientColor = filter_input(INPUT_POST, 'clientColor');
+        $classificationId = filter_input(INPUT_POST, 'classificationId');
+
+        // echo "<h1>clientPrice: $clientPrice </h1>"; //!! Testing ONLY
+
+        if(empty($clientMake) || empty($clientModel) || empty($clientDescription) || empty($clientImage) || empty($clientThumbnail) || empty($clientPrice) || empty($clientStock) || empty($clientColor) || empty($classificationId)) {
+            $message = "<h2 class=\"status-error\"> Please complete all empty form fields. </h2>";
+            include '../view/add-vehicle.php';
+            exit;
+        }
+
+        $addOutcome = addVehicle($clientMake, $clientModel, $clientDescription, $clientImage, $clientThumbnail, $clientPrice, $clientStock, $clientColor, $classificationId);
+
+        // echo "<h2> returned value : $addOutcome</h2>"; //!! Testing ONLY
+
+        if($addOutcome === 1) {
+            $message = "<h2 class=\"status-good\">New vehicle $clientMake:$clientModel added to the inventory. </h2>";
+            include '../view/add-vehicle.php';
+            exit;
+        }else {
+            $message = "<h2 class=\"status-error\">There was a problem adding $clientMake:$clientModel to the inventory. Please try again. </h2>";
+            include '../view/add-vehicle.php';
+            exit;
+        }
         break;
     case 'add-classification':
-        // include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/view/registration.php';
-        // echo 'Add Classification Page';
 
         $clientClassification = filter_input(INPUT_POST, 'clientClassification');
 
         // Check for missing data
         if (empty($clientClassification)) {
-            $message = '<p>Please provide a new classification.</p>';
+            $message = "<h2 class=\"status-error\">Please provide a new classification.</h2>";
             include '../view/add-classification.php';
             exit;
         }
@@ -56,11 +85,11 @@ switch ($action) {
         $newClassification = addClassification($clientClassification);
 
         if ($newClassification === 1) {
-            $message = "<p>New Classification $clientClassification added. </p>";
+            $message = "<h2 class=\"status-good\">New Classification $clientClassification added. </h2>";
             include '../view/add-classification.php';
             exit;
         } else {
-            $message = "<p>Sorry there was an error add $clientClassification. Please try again.</p>";
+            $message = "<h2 class=\"status-error\">Sorry there was an error add $clientClassification. Please try again.</h2>";
             include '../view/add-classification.php';
             exit;
         }
