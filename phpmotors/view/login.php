@@ -28,9 +28,9 @@
 
         <form action="/phpmotors/accounts/index.php" method="post">
             <label for="email-input">Email Address:</label>
-            <input type="text" id="email-input" name="email-input" placeholder="email address" />
+            <input type="email" id="email-input" name="email-input" placeholder="email address" required/>
             <label for="password-input">Password:</label>
-            <input type="password" id="password-input" name="password-input" placeholder="password" />
+            <input type="password" id="password-input" name="password-input" placeholder="password" pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required/>
             <button type="submit">Login</button>
         </form>
         <h2>No account?<a class="login-signup-link" href="/phpmotors/accounts?action=registration">Sign-up</a></h2>

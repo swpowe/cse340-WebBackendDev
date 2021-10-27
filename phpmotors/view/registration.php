@@ -32,9 +32,9 @@
             <label for="lastName-input">Last Name:</label>
             <input type="text" id="lastName-input" name="clientLastname" placeholder="lastName" required />
             <label for="email-input">Email Address:</label>
-            <input type="text" id="email-input" name="clientEmail" placeholder="email address" />
+            <input type="email" id="email-input" name="clientEmail" placeholder="email address" required/>
             <label for="password-input">Password:</label>
-            <input type="password" id="password-input" name="clientPassword" placeholder="password" />
+            <input type="password" id="password-input" name="clientPassword" placeholder="password" pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required/>
             <button id="regbtn" type="submit" name="submit">Sign-up</button>
 
             <!-- Add the action name - value pair -->
