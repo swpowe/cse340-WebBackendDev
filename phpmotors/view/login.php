@@ -30,6 +30,7 @@
             <label for="email-input">Email Address:</label>
             <input type="email" id="email-input" name="email-input" placeholder="email address" required/>
             <label for="password-input">Password:</label>
+            <p>*password must contain ....</p>
             <input type="password" id="password-input" name="password-input" placeholder="password" pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required/>
             <button type="submit">Login</button>
         </form>
