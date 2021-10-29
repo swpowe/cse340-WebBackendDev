@@ -218,6 +218,32 @@ form button {
   padding: 5px;
 }
 
+input.invalid {
+  background-color:pink;
+}
+
+input:required:invalid,
+input:focus:invalid {
+  /* insert your own styles for invalid form input */
+  /* background-color: red; */
+}
+
+input:required:valid {
+  /* insert your own styles for valid form input */
+}
+
+/* input:required:invalid,
+input:focus:invalid {
+  background-image: url(/images/invalid.png);
+  background-position: right top;
+  background-repeat: no-repeat;
+} */
+/* input:required:valid {
+  background-image: url(/images/valid.png);
+  background-position: right top;
+  background-repeat: no-repeat;
+} */
+
 @media screen and (min-width: 1000px) {
   html,
   body,

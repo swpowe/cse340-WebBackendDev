@@ -28,11 +28,15 @@
 
         <form action="/phpmotors/accounts/index.php" method="post">
             <label for="email-input">Email Address:</label>
-            <input type="email" id="email-input" name="email-input" placeholder="email address" required/>
+            <input type="email" id="email-input" name="clientEmail" placeholder="email address" required <?php if (isset($clientEmail)) {
+                                                                                                                echo "value='$clientEmail'";
+                                                                                                            } ?>/>
             <label for="password-input">Password:</label>
-            <p>*password must contain ....</p>
-            <input type="password" id="password-input" name="password-input" placeholder="password" pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required/>
+            <span>Passwords must be at least 8 characters and contain at least 1 number, 1 capital letter and 1 special character</span> 
+            <input type="password" id="password-input" name="clientPassword" placeholder="password" pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required/>
             <button type="submit">Login</button>
+
+            <input type="hidden" name="action" value="Login">
         </form>
         <h2>No account?<a class="login-signup-link" href="/phpmotors/accounts?action=registration">Sign-up</a></h2>
     </main>

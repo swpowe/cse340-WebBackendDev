@@ -28,9 +28,10 @@
         ?>
         <form action="/phpmotors/vehicles/index.php" method="post">
             <label for="clientClassification">Classification Name</label>
-            <input type="text" id="clientClassification" name="clientClassification" />
+            <span>30 Character Limit</span> 
+            <input type="text" id="clientClassification" name="clientClassification" maxlength="30" required/>
 
-            <input type="submit" value="Add Classification" />
+            <input type="submit" value="Add Classification"/>
 
             <input type="hidden" name="action" value="add-classification" />
         </form>

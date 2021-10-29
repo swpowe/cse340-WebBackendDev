@@ -28,13 +28,22 @@
 
         <form action="/phpmotors/accounts/index.php" method="post">
             <label for="firstName-input">First Name:</label>
-            <input type="text" id="firstName-input" name="clientFirstname" placeholder="First Name" required />
+            <input type="text" id="firstName-input" name="clientFirstname" placeholder="First Name" required <?php if (isset($clientFirstname)) {
+                                                                                                                    echo "value='$clientFirstname'";
+                                                                                                                }  ?> />
+
             <label for="lastName-input">Last Name:</label>
-            <input type="text" id="lastName-input" name="clientLastname" placeholder="lastName" required />
+            <input type="text" id="lastName-input" name="clientLastname" placeholder="lastName" required <?php if (isset($clientLastname)) {
+                                                                                                                echo "value='$clientLastname'";
+                                                                                                            }  ?> />
+
             <label for="email-input">Email Address:</label>
-            <input type="email" id="email-input" name="clientEmail" placeholder="email address" required/>
+            <input type="email" id="email-input" name="clientEmail" placeholder="email address" required <?php if (isset($clientEmail)) {
+                                                                                                                echo "value='$clientEmail'";
+                                                                                                            } ?> />
+
             <label for="password-input">Password:</label>
-            <input type="password" id="password-input" name="clientPassword" placeholder="password" pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required/>
+            <input type="password" id="password-input" name="clientPassword" placeholder="password" pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required />
             <button id="regbtn" type="submit" name="submit">Sign-up</button>
 
             <!-- Add the action name - value pair -->

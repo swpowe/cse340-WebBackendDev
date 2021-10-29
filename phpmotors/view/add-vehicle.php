@@ -53,21 +53,21 @@ foreach ($classifications as $classification) {
                 <?php echo $dropdownItems ?>
             </select>
             <label for="vehicle-make">Make</label>
-            <input type="text" id="vehicle-make" name="clientMake" />
+            <input type="text" id="vehicle-make" name="clientMake"  required/>
             <label for="vehicle-model">Model</label>
-            <input type="text" id="vehicle-model" name="clientModel" />
+            <input type="text" id="vehicle-model" name="clientModel"  required/>
             <label for="vehicle-desc">Description</label>
-            <textarea name="clientDescription" id="vehicle-desc" cols="60" rows="5" placeholder="Please enter a vehicle description"></textarea>
+            <textarea name="clientDescription" id="vehicle-desc" cols="60" rows="5" placeholder="Please enter a vehicle description" required></textarea>
             <label for="vehicle-image-path">Image Path</label>
-            <input type="text" id="vehicle-image-path" name="clientImage" />
+            <input type="text" id="vehicle-image-path" name="clientImage" required />
             <label for="vehicle-thumb-path">Thumbnail Path</label>
-            <input type="text" id="vehicle-thumb-path" name="clientThumbnail" />
+            <input type="text" id="vehicle-thumb-path" name="clientThumbnail"  required/>
             <label for="vehicle-price">Price</label>
-            <input type="number" step="0.01" id="vehicle-price" name="clientPrice" />
+            <input type="number" step="0.01" id="vehicle-price" name="clientPrice"  required/>
             <label for="vehicle-stock"># In Stock</label>
-            <input type="number" id="vehicle-stock" name="clientStock" />
+            <input type="number" id="vehicle-stock" name="clientStock"  required/>
             <label for="vehicle-color">Color</label>
-            <input type="text" id="vehicle-color" name="clientColor" />
+            <input type="text" id="vehicle-color" name="clientColor"  required/>
 
             <input type="submit" value="Add Vehicle" />
 
