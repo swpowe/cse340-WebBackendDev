@@ -51,9 +51,6 @@ foreach ($classifications as $classification) {
             <select name="classificationId" id="vehicle-classification" required>
                 <option value="" disabled selected>Choose Car Classification</option>
                 <?php echo $dropdownItems ?>
-                <?php if (isset($classifications)) {
-                    echo "selected='$classifications'";
-                }  ?>
             </select>
             <label for="vehicle-make">Make</label>
             <input type="text" id="vehicle-make" name="clientMake" required <?php if (isset($clientMake)) {
