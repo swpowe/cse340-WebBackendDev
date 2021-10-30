@@ -3,6 +3,9 @@
 
 //!! Get the database connection file
 require_once '../library/connections.php';
+
+// Get the Functions library
+require_once '../library/functions.php';
 //!! Get the PHP Motors model for use as needed
 require_once '../model/main-model.php';
 //!! Getting the accounts model
@@ -14,12 +17,14 @@ $classifications = getClassifications();
 // 	exit;
 
 // //!! Build a navigation bar using the $classifications array
-$navList = '<ul>';
-$navList .= "<li><a href='/phpmotors/index.php' title='View the PHP Motors home page'>Home</a></li>";
-foreach ($classifications as $classification) {
-    $navList .= "<li><a href='/phpmotors/index.php?action=" . urlencode($classification['classificationName']) . "' title='View our $classification[classificationName] product line'>$classification[classificationName]</a></li>";
-}
-$navList .= '</ul>';
+// $navList = '<ul>';
+// $navList .= "<li><a href='/phpmotors/index.php' title='View the PHP Motors home page'>Home</a></li>";
+// foreach ($classifications as $classification) {
+//     $navList .= "<li><a href='/phpmotors/index.php?action=" . urlencode($classification['classificationName']) . "' title='View our $classification[classificationName] product line'>$classification[classificationName]</a></li>";
+// }
+// $navList .= '</ul>';
+
+$navList = dynamicNav($classifications);
 
 //!! echo $navList; // Testing Only
 // exit;
@@ -85,8 +90,10 @@ switch ($action) {
         $newClassification = addClassification($clientClassification);
 
         if ($newClassification === 1) {
-            $message = "<h2 class=\"status-good\">New Classification $clientClassification added. </h2>";
-            include '../view/add-classification.php';
+            // $message = "<h2 class=\"status-good\">New Classification $clientClassification added. </h2>";
+            // include '../view/add-classification.php';
+            // !! changed to refresh page and include new classification in nav
+            header('Location: /phpmotors/vehicles/?action=add-classification-page');
             exit;
         } else {
             $message = "<h2 class=\"status-error\">Sorry there was an error add $clientClassification. Please try again.</h2>";
