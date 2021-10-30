@@ -42,17 +42,17 @@ switch ($action) {
         include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/add-classification.php';
         break;
     case 'add-vehicle':
-        $clientMake = filter_input(INPUT_POST, 'clientMake');
-        $clientModel = filter_input(INPUT_POST, 'clientModel');
-        $clientDescription = filter_input(INPUT_POST, 'clientDescription');
-        $clientImage = filter_input(INPUT_POST, 'clientImage');
-        $clientThumbnail = filter_input(INPUT_POST, 'clientThumbnail');
-        $clientPrice = filter_input(INPUT_POST, 'clientPrice');
-        $clientPrice = filter_var($clientPrice, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
-        $clientPrice = filter_var($clientPrice, FILTER_VALIDATE_FLOAT);
-        $clientStock = filter_input(INPUT_POST, 'clientStock');
-        $clientColor = filter_input(INPUT_POST, 'clientColor');
-        $classificationId = filter_input(INPUT_POST, 'classificationId');
+        $clientMake = trim(filter_input(INPUT_POST, 'clientMake', FILTER_SANITIZE_STRING));
+        $clientModel = trim(filter_input(INPUT_POST, 'clientModel', FILTER_SANITIZE_STRING));
+        $clientDescription = trim(filter_input(INPUT_POST, 'clientDescription', FILTER_SANITIZE_STRING));
+        $clientImage = trim(filter_input(INPUT_POST, 'clientImage', FILTER_SANITIZE_STRING));
+        $clientThumbnail = trim(filter_input(INPUT_POST, 'clientThumbnail', FILTER_SANITIZE_STRING));
+        $clientPrice = trim(filter_input(INPUT_POST, 'clientPrice'));
+        $clientPrice = trim(filter_var($clientPrice, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION));
+        $clientPrice = trim(filter_var($clientPrice, FILTER_VALIDATE_FLOAT));
+        $clientStock = trim(filter_input(INPUT_POST, 'clientStock', FILTER_SANITIZE_NUMBER_INT));
+        $clientColor = trim(filter_input(INPUT_POST, 'clientColor', FILTER_SANITIZE_STRING));
+        $classificationId = trim(filter_input(INPUT_POST, 'classificationId'));
 
         // echo "<h1>clientPrice: $clientPrice </h1>"; //!! Testing ONLY
 
@@ -78,7 +78,7 @@ switch ($action) {
         break;
     case 'add-classification':
 
-        $clientClassification = filter_input(INPUT_POST, 'clientClassification');
+        $clientClassification = trim(filter_input(INPUT_POST, 'clientClassification', FILTER_SANITIZE_STRING));
 
         // Check for missing data
         if (empty($clientClassification)) {
