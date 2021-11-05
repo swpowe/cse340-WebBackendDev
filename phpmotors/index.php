@@ -1,6 +1,9 @@
 <?php
 // This is the main controller
 
+// Create or Access a Session
+session_start();
+
 // Get the database connection file
 require_once 'library/connections.php';
 // Get the functions library
@@ -35,14 +38,19 @@ if ($action == NULL) {
     $action = filter_input(INPUT_GET, 'action');
 }
 
+// Inject name via cookie info
+if (isset($_COOKIE['firstname'])) {
+    $cookieFirstname = filter_input(INPUT_COOKIE, 'firstname', FILTER_SANITIZE_STRING);
+}
+
 switch ($action) {
     case 'template':
         include 'view/template.php';
         break;
     case 'login': // TESTING ONLY
         include 'view/login.php';
-        break;    
-    
+        break;
+
     default:
         include 'view/home.php';
 }

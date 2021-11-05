@@ -43,6 +43,7 @@
                                                                                                             } ?> />
 
             <label for="password-input">Password:</label>
+            <span>Passwords must be at least 8 characters and contain at least 1 number, 1 capital letter and 1 special character</span>
             <input type="password" id="password-input" name="clientPassword" placeholder="password" pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required />
             <button id="regbtn" type="submit" name="submit">Sign-up</button>
 

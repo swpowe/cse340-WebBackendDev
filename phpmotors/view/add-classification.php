@@ -1,3 +1,10 @@
+<?php
+// Make sure the user is logged in AND is an Admin; redirect to home if not
+if (!isset($_SESSION['loggedin']) || $_SESSION['clientData']['clientLevel'] < 3) {
+    header('Location: /phpmotors');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +20,7 @@
 
 
 <body>
-<?php
+    <?php
     require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/components/header.php'
     ?>
     <nav>
@@ -28,10 +35,10 @@
         ?>
         <form action="/phpmotors/vehicles/index.php" method="post">
             <label for="clientClassification">Classification Name</label>
-            <span>30 Character Limit</span> 
-            <input type="text" id="clientClassification" name="clientClassification" maxlength="30" required/>
+            <span>30 Character Limit</span>
+            <input type="text" id="clientClassification" name="clientClassification" maxlength="30" required />
 
-            <input type="submit" value="Add Classification"/>
+            <input type="submit" value="Add Classification" />
 
             <input type="hidden" name="action" value="add-classification" />
         </form>

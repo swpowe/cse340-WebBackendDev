@@ -21,12 +21,12 @@
     </nav>
     <main>
         <?php
-            if (isset($message)) {
-                echo $message;
-            }
+            if (isset($_SESSION['message'])) {
+                echo $_SESSION['message'];
+               }
         ?>
 
-        <form action="/phpmotors/accounts/index.php" method="post">
+        <form action="/phpmotors/accounts/" method="post">
             <label for="email-input">Email Address:</label>
             <input type="email" id="email-input" name="clientEmail" placeholder="email address" required <?php if (isset($clientEmail)) {
                                                                                                                 echo "value='$clientEmail'";

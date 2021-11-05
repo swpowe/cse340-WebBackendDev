@@ -1,3 +1,10 @@
+<?php
+// Make sure the user is logged in AND is an Admin; redirect to home if not
+if (!isset($_SESSION['loggedin']) || $_SESSION['clientData']['clientLevel'] < 3) {
+    header('Location: /phpmotors');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

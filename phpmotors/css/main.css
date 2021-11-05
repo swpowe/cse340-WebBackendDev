@@ -7,7 +7,7 @@
 html,
 body,
 nav {
-  font-size: 0.65rem;
+  font-size: 0.65rem; /*!! does this fix the font problem */
   min-width: 100%;
 }
 
@@ -28,6 +28,16 @@ header h2 {
   padding-top: 20px;
   position: relative;
   bottom: 10px;
+}
+
+header > h1 > span {
+  color: #4c96d7;
+  padding-right: 5px;
+  
+}
+
+header > h1 > span > a {
+  text-decoration: none;
 }
 
 nav {
@@ -248,12 +258,12 @@ input:focus:invalid {
   html,
   body,
   nav {
-    font-size: 0.65rem;
+    font-size: 1rem;
     min-width: 100vw;
   }
 
   header h2 {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
   }
 
   header img {
@@ -265,7 +275,7 @@ input:focus:invalid {
   }
 
   main h1 {
-    font-size: 4rem;
+    font-size: 2rem;
   }
 
   .about h2 {
@@ -333,6 +343,7 @@ input:focus:invalid {
   body,
   nav {
     min-width: 100vw;
+    font-size: 1rem;
   }
 
   h3 {
