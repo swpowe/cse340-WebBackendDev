@@ -31,21 +31,22 @@ $_SESSION['message'] = '<a href="/phpmotors/accounts">'
     </nav>
     <main>
         <?php
-        echo '
-            <h1>' . $_SESSION['clientData']['clientFirstname'] . ' '
+        echo "
+        <h1>" . $_SESSION['clientData']['clientFirstname'] . " "
             . $_SESSION['clientData']['clientLastname']
-            .  '</h1>
+            .  "</h1>
             <h2> You are logged in.</h2>
             <ul>
-                <li>First name: <em>' . $_SESSION['clientData']['clientFirstname'] . '</em></li>
-                <li>Last name: <em>' . $_SESSION['clientData']['clientLastname'] . '</em></li>
-                <li>Email: <em>' . $_SESSION['clientData']['clientEmail'] . '</em></li>
+                <li>First name: <em>" . $_SESSION['clientData']['clientFirstname'] . "</em></li>
+                <li>Last name: <em>" . $_SESSION['clientData']['clientLastname'] . "</em></li>
+                <li>Email: <em>" . $_SESSION['clientData']['clientEmail'] . "</em></li>
             </ul>
-        ';
+        ";
 
         if ($_SESSION['clientData']['clientLevel'] > 1) {
-            echo "<p><a href='/phpmotors/vehicles'>Vehicle Management</a></P";
+            echo "<p><a href='/phpmotors/vehicles'>Vehicle Management</a></p>";
         };
+
         ?>
     </main>
     <?php
