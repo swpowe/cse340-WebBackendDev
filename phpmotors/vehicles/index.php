@@ -59,7 +59,7 @@ switch ($action) {
 
         // echo "<h1>clientPrice: $clientPrice </h1>"; //!! Testing ONLY
 
-        if(empty($clientMake) || empty($clientModel) || empty($clientDescription) || empty($clientImage) || empty($clientThumbnail) || empty($clientPrice) || empty($clientStock) || empty($clientColor) || empty($classificationId)) {
+        if (empty($clientMake) || empty($clientModel) || empty($clientDescription) || empty($clientImage) || empty($clientThumbnail) || empty($clientPrice) || empty($clientStock) || empty($clientColor) || empty($classificationId)) {
             $message = "<h2 class=\"status-error\"> Please complete all empty form fields. </h2>";
             include '../view/add-vehicle.php';
             exit;
@@ -69,11 +69,11 @@ switch ($action) {
 
         // echo "<h2> returned value : $addOutcome</h2>"; //!! Testing ONLY
 
-        if($addOutcome === 1) {
+        if ($addOutcome === 1) {
             $message = "<h2 class=\"status-good\">New vehicle $clientMake:$clientModel added to the inventory. </h2>";
             include '../view/add-vehicle.php';
             exit;
-        }else {
+        } else {
             $message = "<h2 class=\"status-error\">There was a problem adding $clientMake:$clientModel to the inventory. Please try again. </h2>";
             include '../view/add-vehicle.php';
             exit;
@@ -135,6 +135,34 @@ switch ($action) {
         //TODO refresh the nav bar
         //TODO turn parts of this into functions to be called rather then repeat code
         break;
+
+        /* * ********************************** 
+    * Get vehicles by classificationId 
+    * Used for starting Update & Delete process 
+    * ********************************** */
+    case 'getInventoryItems':
+        // Get the classificationId 
+        $classificationId = filter_input(INPUT_GET, 'classificationId', FILTER_SANITIZE_NUMBER_INT);
+        // Fetch the vehicles by classificationId from the DB 
+        $inventoryArray = getInventoryByClassification($classificationId);
+        // Convert the array to a JSON object and send it back 
+        echo json_encode($inventoryArray);
+        break;
+
+        // used to modify vehicle info
+    case 'mod':
+    case 'mod':
+        $invId = filter_input(INPUT_GET, 'invId', FILTER_VALIDATE_INT);
+        $invInfo = getInvItemInfo($invId);
+        if (count($invInfo) < 1) {
+            $message = 'Sorry, no vehicle information could be found.';
+        }
+        include '../view/vehicle-update.php';
+        exit;
+        break;
     default:
+        $classificationList = buildClassificationList($classifications);
         include '../view/vehicle-man.php';
+        exit;
+        break;
 }
