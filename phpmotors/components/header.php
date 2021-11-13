@@ -2,7 +2,7 @@
     <img class="header-logo" src="/phpmotors/images/site/logo.png" alt="php motors logo" />
     <h1>
         <?php if (isset($_SESSION['loggedin'])) {
-            echo "<span>Welcome" . $_SESSION['clientData']['clientFirstname'] . "</span>"
+            echo "<a href='/phpmotors/accounts/'><span>Welcome " . $_SESSION['clientData']['clientFirstname'] . "</span></a>"
                 . '| <a href="/phpmotors/accounts?action=Logout">Logout</a>'; //!! fix format and url
         } else {
             echo '<a href="/phpmotors/accounts?action=login">My Account</a>';

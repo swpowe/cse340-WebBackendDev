@@ -86,50 +86,50 @@ foreach ($classifications as $classification) {
                 <?php echo $dropdownItems ?>
             </select>
             <label for="vehicle-make">Make</label>
-            <input type="text" id="vehicle-make" name="clientMake" required <?php if (isset($clientMake)) { //!! need ot change all client and inv make model?
-                                                                                echo "value='$clientMake'";
+            <input type="text" id="vehicle-make" name="invMake" required <?php if (isset($invMake)) { //!! need ot change all client and inv make model?
+                                                                                echo "value='$invMake'";
                                                                             } elseif (isset($invInfo['invModel'])) {
                                                                                 echo "value='$invInfo[invModel]'";
                                                                             } ?> />
             <label for="vehicle-model">Model</label>
-            <input type="text" id="vehicle-model" name="clientModel" required <?php if (isset($clientModel)) {
-                                                                                    echo "value='$clientModel'";
+            <input type="text" id="vehicle-model" name="invModel" required <?php if (isset($invModel)) {
+                                                                                    echo "value='$invModel'";
                                                                                 } elseif (isset($invInfo['invMake'])) {
                                                                                     echo "value='$invInfo[invMake]'";
                                                                                 } ?> />
             <label for="vehicle-desc">Description</label>
-            <textarea name="clientDescription" id="vehicle-desc" cols="60" rows="5" placeholder="Please enter a vehicle description" required> <?php if (isset($clientDescription)) {
-                                                                                                                                                    echo $clientDescription;
+            <textarea name="invDescription" id="vehicle-desc" cols="60" rows="5" placeholder="Please enter a vehicle description" required> <?php if (isset($invDescription)) {
+                                                                                                                                                    echo $invDescription;
                                                                                                                                                 } elseif (isset($invInfo['invDescription'])) {
                                                                                                                                                     echo $invInfo['invDescription'];
                                                                                                                                                 }  ?></textarea>
             <label for="vehicle-image-path">Image Path</label>
-            <input type="text" id="vehicle-image-path" name="clientImage" required <?php if (isset($clientImage)) {
-                                                                                        echo "value='$clientImage'";
+            <input type="text" id="vehicle-image-path" name="invImage" required <?php if (isset($invImage)) {
+                                                                                        echo "value='$invImage'";
                                                                                     } elseif (isset($invInfo['invImage'])) {
                                                                                         echo "value='$invInfo[invImage]'";
                                                                                     }  ?> />
             <label for="vehicle-thumb-path">Thumbnail Path</label>
-            <input type="text" id="vehicle-thumb-path" name="clientThumbnail" required <?php if (isset($clientThumbnail)) {
-                                                                                            echo "value='$clientThumbnail'";
+            <input type="text" id="vehicle-thumb-path" name="invThumbnail" required <?php if (isset($invThumbnail)) {
+                                                                                            echo "value='$invThumbnail'";
                                                                                         } elseif (isset($invInfo['invThumbnail'])) {
                                                                                             echo "value='$invInfo[invThumbnail]'";
                                                                                         }  ?> />
             <label for="vehicle-price">Price</label>
-            <input type="number" step="0.01" id="vehicle-price" name="clientPrice" required <?php if (isset($clientPrice)) {
-                                                                                                echo "value='$clientPrice'";
+            <input type="number" step="0.01" id="vehicle-price" name="invPrice" required <?php if (isset($invPrice)) {
+                                                                                                echo "value='$invPrice'";
                                                                                             } elseif (isset($invInfo['invPrice'])) {
                                                                                                 echo "value='$invInfo[invPrice]'";
                                                                                             }  ?> />
             <label for="vehicle-stock"># In Stock</label>
-            <input type="number" id="vehicle-stock" name="clientStock" required <?php if (isset($clientStock)) {
-                                                                                    echo "value='$clientStock'";
+            <input type="number" id="vehicle-stock" name="invStock" required <?php if (isset($invStock)) {
+                                                                                    echo "value='$invStock'";
                                                                                 } elseif (isset($invInfo['invStock'])) {
                                                                                     echo "value='$invInfo[invStock]'";
                                                                                 }  ?> />
             <label for="vehicle-color">Color</label>
-            <input type="text" id="vehicle-color" name="clientColor" required <?php if (isset($clientColor)) {
-                                                                                    echo "value='$clientColor'";
+            <input type="text" id="vehicle-color" name="invColor" required <?php if (isset($invColor)) {
+                                                                                    echo "value='$invColor'";
                                                                                 } elseif (isset($invInfo['invColor'])) {
                                                                                     echo "value='$invInfo[invColor]'";
                                                                                 }  ?> />

@@ -5,12 +5,12 @@
 // add new classification
 
 // function to handle adding a new car classification
-function addClassification($clientClassification)
+function addClassification($invClassification)
 {
     $db = phpmotorsConnect();
-    $sql = 'INSERT INTO carclassification (classificationName) VALUES (:clientClassification)';
+    $sql = 'INSERT INTO carclassification (classificationName) VALUES (:invClassification)';
     $stmt = $db->prepare($sql);
-    $stmt->bindValue(':clientClassification', $clientClassification, PDO::PARAM_STR);
+    $stmt->bindValue(':invClassification', $invClassification, PDO::PARAM_STR);
 
     $stmt->execute();
 
@@ -21,22 +21,22 @@ function addClassification($clientClassification)
 }
 
 // function to handle adding a new vehicle
-function addVehicle($clientMake, $clientModel, $clientDescription, $clientImage, $clientThumbnail, $clientPrice, $clientStock, $clientColor, $classificationId)
+function addVehicle($invMake, $invModel, $invDescription, $invImage, $invThumbnail, $invPrice, $invStock, $invColor, $classificationId)
 {
 
-    // echo "$clientMake, $clientModel, $clientDescription, $clientImage, $clientThumbnail, $clientPrice, $clientStock, $clientColor, $classificationId"; //!! Testing ONLY
+    // echo "$invMake, $invModel, $invDescription, $invImage, $invThumbnail, $invPrice, $invStock, $invColor, $classificationId"; //!! Testing ONLY
 
     $db = phpmotorsConnect();
-    $sql = 'INSERT INTO inventory (invMake, invModel, invDescription, invImage, invThumbnail, invPrice, invStock, invColor, classificationId) VALUES (:clientMake, :clientModel, :clientDescription, :clientImage, :clientThumbnail, :clientPrice, :clientStock, :clientColor, :classificationId)';
+    $sql = 'INSERT INTO inventory (invMake, invModel, invDescription, invImage, invThumbnail, invPrice, invStock, invColor, classificationId) VALUES (:invMake, :invModel, :invDescription, :invImage, :invThumbnail, :invPrice, :invStock, :invColor, :classificationId)';
     $stmt = $db->prepare($sql);
-    $stmt->bindValue(':clientMake', $clientMake, PDO::PARAM_STR);
-    $stmt->bindValue(':clientModel', $clientModel, PDO::PARAM_STR);
-    $stmt->bindValue(':clientDescription', $clientDescription, PDO::PARAM_STR);
-    $stmt->bindValue(':clientImage', $clientImage, PDO::PARAM_STR);
-    $stmt->bindValue(':clientThumbnail', $clientThumbnail, PDO::PARAM_STR);
-    $stmt->bindValue(':clientPrice', $clientPrice, PDO::PARAM_STR);
-    $stmt->bindValue(':clientStock', $clientStock, PDO::PARAM_STR);
-    $stmt->bindValue(':clientColor', $clientColor, PDO::PARAM_STR);
+    $stmt->bindValue(':invMake', $invMake, PDO::PARAM_STR);
+    $stmt->bindValue(':invModel', $invModel, PDO::PARAM_STR);
+    $stmt->bindValue(':invDescription', $invDescription, PDO::PARAM_STR);
+    $stmt->bindValue(':invImage', $invImage, PDO::PARAM_STR);
+    $stmt->bindValue(':invThumbnail', $invThumbnail, PDO::PARAM_STR);
+    $stmt->bindValue(':invPrice', $invPrice, PDO::PARAM_STR);
+    $stmt->bindValue(':invStock', $invStock, PDO::PARAM_STR);
+    $stmt->bindValue(':invColor', $invColor, PDO::PARAM_STR);
     $stmt->bindValue(':classificationId', $classificationId, PDO::PARAM_STR);
 
 
@@ -45,16 +45,16 @@ function addVehicle($clientMake, $clientModel, $clientDescription, $clientImage,
     $rowsChanged = $stmt->rowCount();
     $stmt->closeCursor();
 
-    // return '$clientMake' . ' $clientModel' . ' $clientDescription' . ' $clientImage' . ' $clientThumbnail' . ' $clientPrice' . ' $clientStock' . ' $clientColor' . ' $classificationId'; //!! Testing ONLY
+    // return '$invMake' . ' $invModel' . ' $invDescription' . ' $invImage' . ' $invThumbnail' . ' $invPrice' . ' $invStock' . ' $invColor' . ' $classificationId'; //!! Testing ONLY
 
     return $rowsChanged;
 }
 
 // function to handle updating a new vehicle
-function updateVehicle($invId, $classificationId, $clientMake, $clientModel, $clientDescription, $clientImage, $clientThumbnail, $clientPrice, $clientStock, $clientColor)
+function updateVehicle($invId, $classificationId, $invMake, $invModel, $invDescription, $invImage, $invThumbnail, $invPrice, $invStock, $invColor)
 {
 
-    // echo "$clientMake, $clientModel, $clientDescription, $clientImage, $clientThumbnail, $clientPrice, $clientStock, $clientColor, $classificationId"; //!! Testing ONLY
+    // echo "$invMake, $invModel, $invDescription, $invImage, $invThumbnail, $invPrice, $invStock, $invColor, $classificationId"; //!! Testing ONLY
 
     $db = phpmotorsConnect();
     $sql = 'UPDATE inventory SET invMake = :invMake, invModel = :invModel, 
@@ -63,14 +63,14 @@ function updateVehicle($invId, $classificationId, $clientMake, $clientModel, $cl
 	invStock = :invStock, invColor = :invColor, 
 	classificationId = :classificationId WHERE invId = :invId';
     $stmt = $db->prepare($sql);
-    $stmt->bindValue(':clientMake', $clientMake, PDO::PARAM_STR);
-    $stmt->bindValue(':clientModel', $clientModel, PDO::PARAM_STR);
-    $stmt->bindValue(':clientDescription', $clientDescription, PDO::PARAM_STR);
-    $stmt->bindValue(':clientImage', $clientImage, PDO::PARAM_STR);
-    $stmt->bindValue(':clientThumbnail', $clientThumbnail, PDO::PARAM_STR);
-    $stmt->bindValue(':clientPrice', $clientPrice, PDO::PARAM_STR);
-    $stmt->bindValue(':clientStock', $clientStock, PDO::PARAM_STR);
-    $stmt->bindValue(':clientColor', $clientColor, PDO::PARAM_STR);
+    $stmt->bindValue(':invMake', $invMake, PDO::PARAM_STR);
+    $stmt->bindValue(':invModel', $invModel, PDO::PARAM_STR);
+    $stmt->bindValue(':invDescription', $invDescription, PDO::PARAM_STR);
+    $stmt->bindValue(':invImage', $invImage, PDO::PARAM_STR);
+    $stmt->bindValue(':invThumbnail', $invThumbnail, PDO::PARAM_STR);
+    $stmt->bindValue(':invPrice', $invPrice, PDO::PARAM_STR);
+    $stmt->bindValue(':invStock', $invStock, PDO::PARAM_STR);
+    $stmt->bindValue(':invColor', $invColor, PDO::PARAM_STR);
     $stmt->bindValue(':classificationId', $classificationId, PDO::PARAM_STR);
     $stmt->bindValue(':invId', $invId, PDO::PARAM_INT);
 
@@ -80,7 +80,7 @@ function updateVehicle($invId, $classificationId, $clientMake, $clientModel, $cl
     $rowsChanged = $stmt->rowCount();
     $stmt->closeCursor();
 
-    // return '$clientMake' . ' $clientModel' . ' $clientDescription' . ' $clientImage' . ' $clientThumbnail' . ' $clientPrice' . ' $clientStock' . ' $clientColor' . ' $classificationId';
+    // return '$invMake' . ' $invModel' . ' $invDescription' . ' $invImage' . ' $invThumbnail' . ' $invPrice' . ' $invStock' . ' $invColor' . ' $classificationId';
 
     return $rowsChanged;
 }
@@ -110,3 +110,15 @@ function getInvItemInfo($invId)
     $stmt->closeCursor();
     return $invInfo;
 }
+
+// Delete Vehicle
+function deleteVehicle($invId) {
+    $db = phpmotorsConnect();
+    $sql = 'DELETE FROM inventory WHERE invId = :invId';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':invId', $invId, PDO::PARAM_INT);
+    $stmt->execute();
+    $rowsChanged = $stmt->rowCount();
+    $stmt->closeCursor();
+    return $rowsChanged;
+   }
