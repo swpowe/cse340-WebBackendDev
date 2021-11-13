@@ -45,6 +45,41 @@ function addVehicle($clientMake, $clientModel, $clientDescription, $clientImage,
     $rowsChanged = $stmt->rowCount();
     $stmt->closeCursor();
 
+    // return '$clientMake' . ' $clientModel' . ' $clientDescription' . ' $clientImage' . ' $clientThumbnail' . ' $clientPrice' . ' $clientStock' . ' $clientColor' . ' $classificationId'; //!! Testing ONLY
+
+    return $rowsChanged;
+}
+
+// function to handle updating a new vehicle
+function updateVehicle($invId, $classificationId, $clientMake, $clientModel, $clientDescription, $clientImage, $clientThumbnail, $clientPrice, $clientStock, $clientColor)
+{
+
+    // echo "$clientMake, $clientModel, $clientDescription, $clientImage, $clientThumbnail, $clientPrice, $clientStock, $clientColor, $classificationId"; //!! Testing ONLY
+
+    $db = phpmotorsConnect();
+    $sql = 'UPDATE inventory SET invMake = :invMake, invModel = :invModel, 
+	invDescription = :invDescription, invImage = :invImage, 
+	invThumbnail = :invThumbnail, invPrice = :invPrice, 
+	invStock = :invStock, invColor = :invColor, 
+	classificationId = :classificationId WHERE invId = :invId';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':clientMake', $clientMake, PDO::PARAM_STR);
+    $stmt->bindValue(':clientModel', $clientModel, PDO::PARAM_STR);
+    $stmt->bindValue(':clientDescription', $clientDescription, PDO::PARAM_STR);
+    $stmt->bindValue(':clientImage', $clientImage, PDO::PARAM_STR);
+    $stmt->bindValue(':clientThumbnail', $clientThumbnail, PDO::PARAM_STR);
+    $stmt->bindValue(':clientPrice', $clientPrice, PDO::PARAM_STR);
+    $stmt->bindValue(':clientStock', $clientStock, PDO::PARAM_STR);
+    $stmt->bindValue(':clientColor', $clientColor, PDO::PARAM_STR);
+    $stmt->bindValue(':classificationId', $classificationId, PDO::PARAM_STR);
+    $stmt->bindValue(':invId', $invId, PDO::PARAM_INT);
+
+
+    $stmt->execute();
+
+    $rowsChanged = $stmt->rowCount();
+    $stmt->closeCursor();
+
     // return '$clientMake' . ' $clientModel' . ' $clientDescription' . ' $clientImage' . ' $clientThumbnail' . ' $clientPrice' . ' $clientStock' . ' $clientColor' . ' $classificationId';
 
     return $rowsChanged;
