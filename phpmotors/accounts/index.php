@@ -129,7 +129,7 @@ switch ($action) {
         include '../view/admin.php';
         exit;
         break;
-    case 'Logout':// Log user out Case
+    case 'Logout': // Log user out Case
         // Session data unset
         // $_SESSION['loggedin'] = FALSE;
         session_unset();
@@ -137,9 +137,105 @@ switch ($action) {
         session_destroy();
         // Return to home
         header('Location: /phpmotors');
+    case 'user-management':
+        $_SESSION['message'] = '';
+        include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/user-management.php';
+        break;
+    case 'update-info':
+        // echo 'Update Info Page';
+
+        // Filter and store the data
+        $clientFirstname = trim(filter_input(INPUT_POST, 'clientFirstname', FILTER_SANITIZE_STRING));
+        $clientLastname = trim(filter_input(INPUT_POST, 'clientLastname', FILTER_SANITIZE_STRING));
+        $clientEmail = trim(filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL));
+
+
+        $clientEmail = checkEmail($clientEmail);
+
+
+        // // Check to see if email already exists
+        // $existingEmail = checkExistingEmail($clientEmail);
+
+        // // Check for existing email address in the table
+        // if ($existingEmail) {
+        //     $message = '<p class="notice">That email address already exists. Do you want to login instead?</p>';
+        //     include '../view/login.php';
+        //     exit;
+        // }
+
+        // Check for missing data
+        if (empty($clientFirstname) || empty($clientLastname) || empty($clientEmail)) {
+            $message = '<p>Please provide information for all empty form fields.</p>';
+            include '../view/registration.php';
+            exit;
+        }
+
+        // Hash the checked password
+        // $hashedPassword = password_hash($clientPassword, PASSWORD_DEFAULT);
+
+        // Send the data to the model
+        $regOutcome = updateInfo($clientFirstname, $clientLastname, $clientEmail);
+
+        // Check and report the result
+        if ($regOutcome === 1) {
+            // Set Cookie
+            setcookie('firstname', $clientFirstname, strtotime('+1 year'), '/');
+
+            $_SESSION['clientData']['clientFirstname'] = $clientFirstname;
+            $_SESSION['clientData']['clientLastname'] = $clientLastname;
+            $_SESSION['clientData']['clientEmail'] = $clientEmail;
+
+            $_SESSION['updateMessage'] = $_SESSION['clientData']['clientFirstname'] .", your information has been updated.";
+            header('Location: /phpmotors/accounts/');
+            exit;
+        } else {
+            $updateMessage = "<p>Sorry $clientFirstname, but the registration failed. Please try again.</p>";
+            include '../view/user-management.php';
+            exit;
+        }
+
+
+
+
+
+        break;
+
+    case 'update-password':
+        // echo 'password update';
+
+        $clientEmail = $_SESSION['clientData']['clientEmail'];
+        $clientPassword = trim(filter_input(INPUT_POST, 'clientPassword', FILTER_SANITIZE_STRING));
+        $checkPassword = checkPassword($clientPassword);  
+
+        // Check for missing data
+        if (empty($clientPassword)) { //!! is the password check working?
+            $_SESSION['updateMessage'] = '<p>Please provide information for all empty form fields.</p>';
+            include '../view/user-management.php';
+            exit;
+        }
+        // Hash the checked password
+        $hashedPassword = password_hash($clientPassword, PASSWORD_DEFAULT);
+        // Send the data to the model
+        $regOutcome = updatePassword($hashedPassword, $clientEmail);
+        // Check and report the result
+        if ($regOutcome === 1) {
+            // Set Cookie
+            setcookie('firstname', $clientFirstname, strtotime('+1 year'), '/');
+
+            $_SESSION['updateMessage'] = "your password has been updated.";
+            header('Location: /phpmotors/accounts/');
+            exit;
+        } else {
+            $updateMessage = "<p>Sorry $clientFirstname, but the registration failed. Please try again.</p>";
+            include '../view/user-management.php';
+            // echo "no I'm here";
+            exit;
+        }
+        break;
     default:
         // default to admin page
         // if logged in they'll see admin
         // if not see home page
+        $_SESSION['message'] = '';
         include '../view/admin.php'; //!! need to logout and test this
 }

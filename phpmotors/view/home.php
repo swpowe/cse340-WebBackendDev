@@ -1,3 +1,5 @@
+<?php $_SESSION['updateMessage'] = ''?>
+
 <!DOCTYPE html>
 <html lang="en">
 

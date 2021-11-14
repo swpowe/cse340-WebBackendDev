@@ -122,3 +122,5 @@ function deleteVehicle($invId) {
     $stmt->closeCursor();
     return $rowsChanged;
    }
+
+

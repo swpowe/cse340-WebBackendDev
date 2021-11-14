@@ -3,9 +3,9 @@
 if (!isset($_SESSION['loggedin'])) {
     header('Location: /phpmotors');
 }
-$_SESSION['message'] = '<a href="/phpmotors/accounts">'
-    . 'WELCOME ' . $_SESSION['clientData']['clientFirstname']
-    . '</a>';
+if (isset($_SESSION['updateMessage'])) {
+    $updateMessage = $_SESSION['updateMessage'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -35,16 +35,25 @@ $_SESSION['message'] = '<a href="/phpmotors/accounts">'
         <h1>" . $_SESSION['clientData']['clientFirstname'] . " "
             . $_SESSION['clientData']['clientLastname']
             .  "</h1>
-            <h2> You are logged in.</h2>
-            <ul>
+            <h2> You are logged in.</h2>";
+        if (isset($updateMessage)) {
+            echo "<p style='color:red'><em> " . $updateMessage ."</em></p>";
+        }
+
+        echo "<ul>
                 <li>First name: <em>" . $_SESSION['clientData']['clientFirstname'] . "</em></li>
                 <li>Last name: <em>" . $_SESSION['clientData']['clientLastname'] . "</em></li>
                 <li>Email: <em>" . $_SESSION['clientData']['clientEmail'] . "</em></li>
             </ul>
-        ";
+        <div class='user-mangement'>
+            <h2>Account Management</h2>
+            <h3>Use this link to update your account information.</h3>
+            <a href='/phpmotors/accounts?action=user-management'>Update Account Information</a>
+        </div>
+            ";
 
         if ($_SESSION['clientData']['clientLevel'] > 1) {
-            echo "<p><a href='/phpmotors/vehicles'>Vehicle Management</a></p>";
+            echo "<div class='vehicle-management'><h2>Inventory Management</h2><h3>Use this link to manage the inventory. </h3><a href='/phpmotors/vehicles'>Vehicle Management</a></div>";
         };
 
         ?>
