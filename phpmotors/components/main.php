@@ -8,7 +8,7 @@
       <li>Fuzzy dice!</li>
     </ul>
 
-    <img src="images/delorean.jpg" alt="" />
+    <img src="/phpmotors/images/vehicles/delorean.jpg" alt="" />
     <div class="buy-now">
       <button>Own Today</button>
     </div>
