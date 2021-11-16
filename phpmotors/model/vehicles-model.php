@@ -112,7 +112,8 @@ function getInvItemInfo($invId)
 }
 
 // Delete Vehicle
-function deleteVehicle($invId) {
+function deleteVehicle($invId)
+{
     $db = phpmotorsConnect();
     $sql = 'DELETE FROM inventory WHERE invId = :invId';
     $stmt = $db->prepare($sql);
@@ -121,6 +122,4 @@ function deleteVehicle($invId) {
     $rowsChanged = $stmt->rowCount();
     $stmt->closeCursor();
     return $rowsChanged;
-   }
-
-
+}

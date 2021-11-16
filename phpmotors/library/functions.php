@@ -64,14 +64,44 @@ function getVehiclesByClassification($classificationName)
 function buildVehiclesDisplay($vehicles)
 {
     $dv = '<ul id="inv-display">';
+    setlocale(LC_MONETARY, "en_US");
     foreach ($vehicles as $vehicle) {
+        $price = "$" . number_format($vehicle['invPrice']);
+        $href = '/phpmotors/vehicles?action=vehicle-detail&invId='
+            . $vehicle['invId']
+            . '&invMake=' . $vehicle['invMake']
+            . '&invModel=' . $vehicle['invModel']
+            . '&invDescription=' . $vehicle['invDescription']
+            . '&invImage=' . $vehicle['invImage']
+            . '&invPrice=' . $vehicle['invPrice']
+            . '&invStock=' . $vehicle['invStock']
+            . '&invColor=' . $vehicle['invColor'];
+
         $dv .= '<li>';
         $dv .= "<img src='$vehicle[invThumbnail]' alt='Image of $vehicle[invMake] $vehicle[invModel] on phpmotors.com'>";
         $dv .= '<hr>';
-        $dv .= "<h2>$vehicle[invMake] $vehicle[invModel]</h2>";
-        $dv .= "<span>$vehicle[invPrice]</span>";
+        $dv .= "<h2><a href='$href'>$vehicle[invMake] $vehicle[invModel]</a></h2>";
+        $dv .= "<h2>Vehicle ID: $vehicle[invId]</h2>";
+        $dv .= "<span>$price</span>";
         $dv .= '</li>';
     }
     $dv .= '</ul>';
+    return $dv;
+}
+
+function buildVehicleDetail($details)
+{ 
+    $dv = '<section class="detail-view">';
+    $dv .= "<h2>$details[1] $details[2]</h2>";
+    $dv .= "<div class='detail-view-details'>";
+    $dv .= "<h3>$details[1] $details[2] Details</h3>"; //!! NEED to change h3 styles so this works and isn't huge!
+    $dv .= "<h3>$details[3]</h3>";
+    $dv .= "<li>$details[4]";
+    $dv .= "<li>$details[5]";
+    $dv .= "<li>$details[6]";
+    $dv .= "<li>$details[7]";
+    $dv .= "</div>";
+    $dv .= "</section>";
+
     return $dv;
 }
