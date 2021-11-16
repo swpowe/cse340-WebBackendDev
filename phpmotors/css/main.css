@@ -33,7 +33,6 @@ header h2 {
 header > h1 > span {
   color: #4c96d7;
   padding-right: 5px;
-  
 }
 
 header > h1 > span > a {
@@ -229,7 +228,7 @@ form button {
 }
 
 input.invalid {
-  background-color:pink;
+  background-color: pink;
 }
 
 input:required:invalid,
@@ -253,6 +252,24 @@ input:focus:invalid {
   background-position: right top;
   background-repeat: no-repeat;
 } */
+
+#inv-display {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#inv-display li {
+  margin-bottom: 0.5em;
+  border: 1px #ccc solid;
+  list-style-type: none;
+  flex: 1 1 auto;
+}
+
+#inv-display li img {
+  max-width: 100%;
+}
 
 @media screen and (min-width: 1000px) {
   html,
@@ -336,7 +353,36 @@ input:focus:invalid {
   footer {
     font-size: 2rem;
   }
+
+  /* For vehicle display in classification view */
+	#inv-display {
+		flex-flow: row wrap;
+		justify-content: flex-start;
+	}
+
+	#inv-display h2{
+		font-size: 1rem;
+	}
+
+	#inv-display li {
+		max-width: 200px;
+		flex: 1 0 auto;
+		text-align: center;
+		height: 250px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+      
+	#inv-display div {
+		width: 100%;
+	}
+
+
 }
+
+
+
 
 @media screen and (min-width: 1600px) {
   html,
