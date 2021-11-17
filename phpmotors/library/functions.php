@@ -78,7 +78,7 @@ function buildVehiclesDisplay($vehicles)
             . '&invColor=' . $vehicle['invColor'];
 
         $dv .= '<li>';
-        $dv .= "<img src='$vehicle[invThumbnail]' alt='Image of $vehicle[invMake] $vehicle[invModel] on phpmotors.com'>";
+        $dv .= "<a href='$href'><img src='$vehicle[invThumbnail]' alt='Image of $vehicle[invMake] $vehicle[invModel] on phpmotors.com'></a>";
         $dv .= '<hr>';
         $dv .= "<h2><a href='$href'>$vehicle[invMake] $vehicle[invModel]</a></h2>";
         $dv .= "<h2>Vehicle ID: $vehicle[invId]</h2>";
@@ -91,15 +91,19 @@ function buildVehiclesDisplay($vehicles)
 
 function buildVehicleDetail($details)
 { 
+    $price = "$" . number_format($details[5]);
+    $back = "/phpmotors/vehicles?action=classification&classificationName=$details[1]";
+
     $dv = '<section class="detail-view">';
-    $dv .= "<h2>$details[1] $details[2]</h2>";
+    $dv .= "<h1>$details[1] $details[2]</h1>";
     $dv .= "<div class='detail-view-details'>";
-    $dv .= "<h3>$details[1] $details[2] Details</h3>"; //!! NEED to change h3 styles so this works and isn't huge!
+    $dv .= "<img class='detail-view-image' src='$details[4]'>"; // img url
+    $dv .= "<h3 >$details[1] $details[2] Details</h3>"; //!! NEED to change h3 styles so this works and isn't huge!
     $dv .= "<h3>$details[3]</h3>";
-    $dv .= "<li>$details[4]";
-    $dv .= "<li>$details[5]";
-    $dv .= "<li>$details[6]";
-    $dv .= "<li>$details[7]";
+    $dv .= "<h3>Price $price</h3>";
+    $dv .= "<h3># in Stock: $details[6]</h3>";
+    $dv .= "<h3>Color: $details[7]</h3>";
+    // $dv .= "<a href='$back'>Back</a>";
     $dv .= "</div>";
     $dv .= "</section>";
 

@@ -33,7 +33,7 @@ $details = getInvItemInfo(1);
         <?php echo $navList; ?>
     </nav>
     <main>
-        <h1>Vehicle Detail Page</h1>
+        <!-- <h1>Vehicle Detail Page</h1> -->
         <?php if (isset($vehicleDetails)) {
             echo $vehicleDetails;
         } ?>

@@ -271,6 +271,25 @@ input:focus:invalid {
   max-width: 100%;
 }
 
+.detail-view {
+  /* display: grid; */
+padding: 5px 0;
+
+}
+
+.detail-view-details h3 {
+  padding: 5px;
+}
+
+.detail-view-details h3:nth-child(odd) {
+  background-color: rgba(222, 216, 216, 0.625);
+}
+
+.detail-view-image {
+  margin: 10px 0;
+  /* max-width: 20%; */
+}
+
 @media screen and (min-width: 1000px) {
   html,
   body,
@@ -355,34 +374,29 @@ input:focus:invalid {
   }
 
   /* For vehicle display in classification view */
-	#inv-display {
-		flex-flow: row wrap;
-		justify-content: flex-start;
-	}
+  #inv-display {
+    flex-flow: row wrap;
+    justify-content: flex-start;
+  }
 
-	#inv-display h2{
-		font-size: 1rem;
-	}
+  #inv-display h2 {
+    font-size: 1rem;
+  }
 
-	#inv-display li {
-		max-width: 200px;
-		flex: 1 0 auto;
-		text-align: center;
-		height: 250px;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-	}
-      
-	#inv-display div {
-		width: 100%;
-	}
+  #inv-display li {
+    max-width: 200px;
+    flex: 1 0 auto;
+    text-align: center;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 
-
+  #inv-display div {
+    width: 100%;
+  }
 }
-
-
-
 
 @media screen and (min-width: 1600px) {
   html,

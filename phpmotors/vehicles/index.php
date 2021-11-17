@@ -247,7 +247,7 @@ switch ($action) {
         // $invId = '3';
         // echo "vehicle detail page $invId";
 
-        $details = [$invId, $invMake, $invModel, $invDescription, $invImage, $invPrice, $invStock, $invColr];
+        $details = [$invId, $invMake, $invModel, $invDescription, $invImage, $invPrice, $invStock, $invColor];
 
         $vehicleDetails = buildVehicleDetail($details);
         include '../view/vehicle-detail.php';
