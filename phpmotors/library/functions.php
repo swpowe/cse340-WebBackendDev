@@ -67,7 +67,8 @@ function buildVehiclesDisplay($vehicles)
     setlocale(LC_MONETARY, "en_US");
     foreach ($vehicles as $vehicle) {
         $price = "$" . number_format($vehicle['invPrice']);
-        $href = '/phpmotors/vehicles?action=vehicle-detail&invId='
+        $href = '/phpmotors/vehicles?action=vehicle-detail&invId=' //!! problem in href. space somewhere.
+        //!! probably need to NOT pass these and do a DB call
             . $vehicle['invId']
             . '&invMake=' . $vehicle['invMake']
             . '&invModel=' . $vehicle['invModel']
@@ -91,18 +92,19 @@ function buildVehiclesDisplay($vehicles)
 
 function buildVehicleDetail($details)
 { 
-    $price = "$" . number_format($details[5]);
+    $price = "$" . number_format($details['invPrice']);
     $back = "/phpmotors/vehicles?action=classification&classificationName=$details[1]";
 
+    //!! need to update array reference from index to named
     $dv = '<section class="detail-view">';
-    $dv .= "<h1>$details[1] $details[2]</h1>";
+    $dv .= "<h1>$details[invMake] $details[invModel]</h1>";
     $dv .= "<div class='detail-view-details'>";
-    $dv .= "<img class='detail-view-image' src='$details[4]'>"; // img url
-    $dv .= "<h3 >$details[1] $details[2] Details</h3>"; //!! NEED to change h3 styles so this works and isn't huge!
-    $dv .= "<h3>$details[3]</h3>";
+    $dv .= "<img class='detail-view-image' src='$details[invImage]'>"; // img url
+    $dv .= "<h3 >$details[invMake] $details[invModel] Details</h3>"; //!! NEED to change h3 styles so this works and isn't huge!
+    $dv .= "<h3>$details[invDescription]</h3>";
     $dv .= "<h3>Price $price</h3>";
-    $dv .= "<h3># in Stock: $details[6]</h3>";
-    $dv .= "<h3>Color: $details[7]</h3>";
+    $dv .= "<h3># in Stock: $details[invStock]</h3>";
+    $dv .= "<h3>Color: $details[invColor]</h3>";
     // $dv .= "<a href='$back'>Back</a>";
     $dv .= "</div>";
     $dv .= "</section>";

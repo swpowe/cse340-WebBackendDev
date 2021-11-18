@@ -235,19 +235,24 @@ switch ($action) {
         break;
     case 'vehicle-detail':
         // pass vehicle info to function buildVehicleDetail
+        // !! probably need to NOT pass and do a DB call here instead
+        
+        // print_r($details);
         // either do db call or pass from url string
         $invId = filter_input(INPUT_GET, 'invId', FILTER_SANITIZE_STRING);
-        $invMake = filter_input(INPUT_GET, 'invMake', FILTER_SANITIZE_STRING);
-        $invModel = filter_input(INPUT_GET, 'invModel', FILTER_SANITIZE_STRING);
-        $invDescription = filter_input(INPUT_GET, 'invDescription', FILTER_SANITIZE_STRING);
-        $invImage = filter_input(INPUT_GET, 'invImage', FILTER_SANITIZE_STRING);
-        $invPrice = filter_input(INPUT_GET, 'invPrice', FILTER_SANITIZE_STRING);
-        $invStock = filter_input(INPUT_GET, 'invStock', FILTER_SANITIZE_STRING);
-        $invColor = filter_input(INPUT_GET, 'invColor', FILTER_SANITIZE_STRING);
-        // $invId = '3';
-        // echo "vehicle detail page $invId";
+        // $invMake = filter_input(INPUT_GET, 'invMake', FILTER_SANITIZE_STRING);
+        // $invModel = filter_input(INPUT_GET, 'invModel', FILTER_SANITIZE_STRING);
+        // $invDescription = filter_input(INPUT_GET, 'invDescription', FILTER_SANITIZE_STRING);
+        // $invImage = filter_input(INPUT_GET, 'invImage', FILTER_SANITIZE_STRING);
+        // $invPrice = filter_input(INPUT_GET, 'invPrice', FILTER_SANITIZE_STRING);
+        // $invStock = filter_input(INPUT_GET, 'invStock', FILTER_SANITIZE_STRING);
+        // $invColor = filter_input(INPUT_GET, 'invColor', FILTER_SANITIZE_STRING);
+        // // $invId = '3';
+        // // echo "vehicle detail page $invId";
 
-        $details = [$invId, $invMake, $invModel, $invDescription, $invImage, $invPrice, $invStock, $invColor];
+        // $details = [$invId, $invMake, $invModel, $invDescription, $invImage, $invPrice, $invStock, $invColor];
+        //!! Need to pass actual clicked invId not hard coded "4"
+        $details = getInvItemInfo($invId);
 
         $vehicleDetails = buildVehicleDetail($details);
         include '../view/vehicle-detail.php';
