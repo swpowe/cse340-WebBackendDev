@@ -56,7 +56,10 @@ foreach ($classifications as $classification) {
             } elseif (isset($invMake) && isset($invModel)) {
                 echo "Modify $invMake $invModel";
             } ?> | PHP Motors</title>
-    <link rel="stylesheet" href="/phpmotors/css/main.css">
+    <link rel="stylesheet" href="/phpmotors/css/small.css">
+    <link rel="stylesheet" href="/phpmotors/css/medium.css">
+    <link rel="stylesheet" href="/phpmotors/css/large.css">
+    <link rel="stylesheet" href="/phpmotors/css/xtra-large.css">
 
 </head>
 

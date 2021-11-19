@@ -16,7 +16,10 @@ if ($_SESSION['clientData']['clientLevel'] < 2) {
     <title><?php if (isset($invInfo['invMake'])) {
                 echo "Delete $invInfo[invMake] $invInfo[invModel]";
             } ?> | PHP Motors</title>
-    <link rel="stylesheet" href="/phpmotors/css/main.css">
+    <link rel="stylesheet" href="/phpmotors/css/small.css">
+    <link rel="stylesheet" href="/phpmotors/css/medium.css">
+    <link rel="stylesheet" href="/phpmotors/css/large.css">
+    <link rel="stylesheet" href="/phpmotors/css/xtra-large.css">
 
 </head>
 

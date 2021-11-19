@@ -3,10 +3,11 @@
   margin: 0;
   padding: 0;
 }
-
+/* SMALL */
 html,
 body,
 nav {
+  /* background-color: blue; */
   font-size: 0.65rem; /*!! does this fix the font problem */
   min-width: 100%;
 }
@@ -75,6 +76,10 @@ main {
   word-spacing: 3px;
 }
 
+main h1 {
+  margin-bottom: 5px;
+}
+
 main img {
   width: 80%;
 }
@@ -83,11 +88,6 @@ main img {
   color: red;
   padding: 25px;
 }
-/* 
-main,
-hr {
-  margin-top: 15px;
-} */
 
 .about {
   color: blue;
@@ -182,7 +182,7 @@ footer {
   font-size: 1rem;
 }
 
-/* #region Form Styles */
+/* Form Styles */
 form {
   display: flex;
   flex-direction: column;
@@ -219,8 +219,7 @@ form button {
   margin-bottom: 10px;
 }
 
-/* #endreion */
-
+/* Login View */
 .login-signup-link {
   color: #0f538f;
   font-size: 1.25rem;
@@ -231,28 +230,7 @@ input.invalid {
   background-color: pink;
 }
 
-input:required:invalid,
-input:focus:invalid {
-  /* insert your own styles for invalid form input */
-  /* background-color: red; */
-}
-
-input:required:valid {
-  /* insert your own styles for valid form input */
-}
-
-/* input:required:invalid,
-input:focus:invalid {
-  background-image: url(/images/invalid.png);
-  background-position: right top;
-  background-repeat: no-repeat;
-} */
-/* input:required:valid {
-  background-image: url(/images/valid.png);
-  background-position: right top;
-  background-repeat: no-repeat;
-} */
-
+/* Classification View */
 #inv-display {
   margin: 0;
   padding: 0;
@@ -261,20 +239,30 @@ input:focus:invalid {
 }
 
 #inv-display li {
-  margin-bottom: 0.5em;
+  margin-bottom: 2.5em;
   border: 1px #ccc solid;
+  border-radius: 5px;
+  box-shadow: 3px 3px 4px gray;
   list-style-type: none;
   flex: 1 1 auto;
+  padding: 5px;
 }
 
 #inv-display li img {
-  max-width: 100%;
+  max-width: 90%;
+  min-height: 230px;
 }
+
+#inv-display span {
+  font-size: 1rem;
+}
+
+/* Detail Page View */
 
 .detail-view {
   /* display: grid; */
-padding: 5px 0;
-
+  font-size: 1rem;
+  padding: 5px 0;
 }
 
 .detail-view-details h3 {
@@ -290,138 +278,3 @@ padding: 5px 0;
   /* max-width: 20%; */
 }
 
-@media screen and (min-width: 1000px) {
-  html,
-  body,
-  nav {
-    font-size: 1rem;
-    min-width: 100vw;
-  }
-
-  header h2 {
-    font-size: 1.5rem;
-  }
-
-  header img {
-    max-width: 25%;
-  }
-
-  a {
-    font-size: 2.5rem;
-  }
-
-  main h1 {
-    font-size: 2rem;
-  }
-
-  .about h2 {
-    font-size: 3rem;
-  }
-
-  .about {
-    font-size: 2rem;
-    padding: 40px;
-  }
-
-  .about img {
-    position: relative;
-    width: 100%;
-    right: 60px;
-  }
-
-  .buy-now button {
-    font-size: 3rem;
-    position: relative;
-    bottom: 400px;
-    right: 360px;
-  }
-
-  .lower-portion {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .reviews {
-    grid-column: 2 /3;
-    padding: 20px;
-  }
-
-  .reviews h2 {
-    font-size: 4rem;
-  }
-
-  .review-list ul li {
-    font-size: 2rem;
-  }
-
-  .upgrades {
-    grid-column: 1 /2;
-    grid-row: 1;
-    padding: 20px;
-  }
-
-  .upgrades h2 {
-    font-size: 4rem;
-    padding-top: 0;
-  }
-
-  .lower-portion h2 {
-    padding-bottom: 40px;
-  }
-
-  footer {
-    font-size: 2rem;
-  }
-
-  /* For vehicle display in classification view */
-  #inv-display {
-    flex-flow: row wrap;
-    justify-content: flex-start;
-  }
-
-  #inv-display h2 {
-    font-size: 1rem;
-  }
-
-  #inv-display li {
-    max-width: 200px;
-    flex: 1 0 auto;
-    text-align: center;
-    height: 250px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  #inv-display div {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width: 1600px) {
-  html,
-  body,
-  nav {
-    min-width: 100vw;
-    font-size: 1rem;
-  }
-
-  h3 {
-    font-size: 3rem;
-  }
-
-  main img {
-    max-width: 100%;
-  }
-
-  .buy-now button {
-    font-size: 3rem;
-    position: relative;
-    bottom: 650px;
-    right: 560px;
-  }
-
-  body ~ h2 {
-    font-size: 3rem;
-  }
-}
