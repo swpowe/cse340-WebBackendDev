@@ -69,14 +69,14 @@ function buildVehiclesDisplay($vehicles)
         $price = "$" . number_format($vehicle['invPrice']);
         $href = '/phpmotors/vehicles?action=vehicle-detail&invId=' //!! problem in href. space somewhere.
         //!! probably need to NOT pass these and do a DB call
-            . $vehicle['invId']
-            . '&invMake=' . $vehicle['invMake']
-            . '&invModel=' . $vehicle['invModel']
-            . '&invDescription=' . $vehicle['invDescription']
-            . '&invImage=' . $vehicle['invImage']
-            . '&invPrice=' . $vehicle['invPrice']
-            . '&invStock=' . $vehicle['invStock']
-            . '&invColor=' . $vehicle['invColor'];
+            . $vehicle['invId'];
+            // . '&invMake=' . $vehicle['invMake']
+            // . '&invModel=' . $vehicle['invModel']
+            // . '&invDescription=' . $vehicle['invDescription']
+            // . '&invImage=' . $vehicle['invImage']
+            // . '&invPrice=' . $vehicle['invPrice']
+            // . '&invStock=' . $vehicle['invStock']
+            // . '&invColor=' . $vehicle['invColor'];
 
         $dv .= '<li>';
         $dv .= "<a href='$href'><img src='$vehicle[invThumbnail]' alt='Image of $vehicle[invMake] $vehicle[invModel] on phpmotors.com'></a>";
@@ -99,8 +99,8 @@ function buildVehicleDetail($details)
     $dv = '<section class="detail-view">';
     $dv .= "<h1>$details[invMake] $details[invModel]</h1>";
     $dv .= "<div class='detail-view-details'>";
-    $dv .= "<img class='detail-view-image' src='$details[invImage]'>"; // img url
-    $dv .= "<h3 >$details[invMake] $details[invModel] Details</h3>"; //!! NEED to change h3 styles so this works and isn't huge!
+    $dv .= "<img class='detail-view-image' src='$details[invImage]' alt='Image of $vehicle[invMake] $vehicle[invModel] on phpmotors.com'>"; // img url
+    $dv .= "<h2 >$details[invMake] $details[invModel] Details</h2>"; //!! NEED to change h3 styles so this works and isn't huge!
     $dv .= "<h3>$details[invDescription]</h3>";
     $dv .= "<h3>Price $price</h3>";
     $dv .= "<h3># in Stock: $details[invStock]</h3>";

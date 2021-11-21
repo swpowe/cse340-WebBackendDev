@@ -77,6 +77,7 @@ main {
 }
 
 main h1 {
+  font-size: 1.85rem;
   margin-bottom: 5px;
 }
 
@@ -246,11 +247,26 @@ input.invalid {
   list-style-type: none;
   flex: 1 1 auto;
   padding: 5px;
+  min-height: 230px;
 }
 
 #inv-display li img {
   max-width: 90%;
-  min-height: 230px;
+  /* min-height: 230px; */
+}
+
+#inv-display hr {
+  margin-top: 10px;
+}
+
+#inv-display h1 {
+  font-size: 1.85rem;
+}
+
+#inv-display h2 {
+  font-size: 1.5rem;
+  margin-top: 10px;
+  
 }
 
 #inv-display span {
@@ -263,6 +279,14 @@ input.invalid {
   /* display: grid; */
   font-size: 1rem;
   padding: 5px 0;
+}
+
+.detail-view h1 {
+  font-size: 1.85rem;
+}
+
+.detail-view h2 {
+  font-size: 1.5rem;
 }
 
 .detail-view-details h3 {

@@ -44,7 +44,7 @@ $details = getInvItemInfo(1);
     <?php
     require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/components/footer.php'
     ?>
-    <script src="../js/inventory.js"></script>
+    <!-- <script src="../js/inventory.js"></script> -->
 </body>
 
 </html>
