@@ -46,52 +46,32 @@ switch ($action) {
         // echo 'Update Info Page';
 
         // Filter and store the data
-        $clientFirstname = trim(filter_input(INPUT_POST, 'clientFirstname', FILTER_SANITIZE_STRING));
+        $clientFirstname = trim(filter_input(INPUT_POST, 'clientFirstname', FILTER_SANITIZE_STRING)); //!! need reviewId and reviewText only right??
         $clientLastname = trim(filter_input(INPUT_POST, 'clientLastname', FILTER_SANITIZE_STRING));
         $clientEmail = trim(filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL));
 
 
-        $clientEmail = checkEmail($clientEmail);
-
-
-        // // Check to see if email already exists
-        // $existingEmail = checkExistingEmail($clientEmail);
-
-        // // Check for existing email address in the table
-        // if ($existingEmail) {
-        //     $message = '<p class="notice">That email address already exists. Do you want to login instead?</p>';
-        //     include '../view/login.php';
-        //     exit;
-        // }
-
-        // Check for missing data
-        if (empty($clientFirstname) || empty($clientLastname) || empty($clientEmail)) {
-            $message = '<p>Please provide information for all empty form fields.</p>';
-            include '../view/registration.php';
-            exit;
-        }
-
-        // Hash the checked password
-        // $hashedPassword = password_hash($clientPassword, PASSWORD_DEFAULT);
 
         // Send the data to the model
-        $regOutcome = updateInfo($clientFirstname, $clientLastname, $clientEmail);
+        $regOutcome = updateInfo($clientFirstname, $clientLastname, $clientEmail); //!! create in review Model
 
         // Check and report the result
         if ($regOutcome === 1) {
-            // Set Cookie
-            setcookie('firstname', $clientFirstname, strtotime('+1 year'), '/');
+            //!! load new page and send message about successful update
+            // // Set Cookie
+            // setcookie('firstname', $clientFirstname, strtotime('+1 year'), '/');
 
-            $_SESSION['clientData']['clientFirstname'] = $clientFirstname;
-            $_SESSION['clientData']['clientLastname'] = $clientLastname;
-            $_SESSION['clientData']['clientEmail'] = $clientEmail;
+            // $_SESSION['clientData']['clientFirstname'] = $clientFirstname;
+            // $_SESSION['clientData']['clientLastname'] = $clientLastname;
+            // $_SESSION['clientData']['clientEmail'] = $clientEmail;
 
-            $_SESSION['updateMessage'] = $_SESSION['clientData']['clientFirstname'] . ", your information has been updated.";
-            header('Location: /phpmotors/accounts/');
+            // $_SESSION['updateMessage'] = $_SESSION['clientData']['clientFirstname'] . ", your information has been updated.";
+            // header('Location: /phpmotors/accounts/');
             exit;
         } else {
-            $updateMessage = "<p>Sorry $clientFirstname, but the registration failed. Please try again.</p>";
-            include '../view/user-management.php';
+            //!! load new page error message
+            // $updateMessage = "<p>Sorry $clientFirstname, but the registration failed. Please try again.</p>";
+            // include '../view/user-management.php';
             exit;
         }
 
