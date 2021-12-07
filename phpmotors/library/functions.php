@@ -68,15 +68,15 @@ function buildVehiclesDisplay($vehicles)
     foreach ($vehicles as $vehicle) {
         $price = "$" . number_format($vehicle['invPrice']);
         $href = '/phpmotors/vehicles?action=vehicle-detail&invId=' //!! problem in href. space somewhere.
-        //!! probably need to NOT pass these and do a DB call
+            //!! probably need to NOT pass these and do a DB call
             . $vehicle['invId'];
-            // . '&invMake=' . $vehicle['invMake']
-            // . '&invModel=' . $vehicle['invModel']
-            // . '&invDescription=' . $vehicle['invDescription']
-            // . '&invImage=' . $vehicle['invImage']
-            // . '&invPrice=' . $vehicle['invPrice']
-            // . '&invStock=' . $vehicle['invStock']
-            // . '&invColor=' . $vehicle['invColor'];
+        // . '&invMake=' . $vehicle['invMake']
+        // . '&invModel=' . $vehicle['invModel']
+        // . '&invDescription=' . $vehicle['invDescription']
+        // . '&invImage=' . $vehicle['invImage']
+        // . '&invPrice=' . $vehicle['invPrice']
+        // . '&invStock=' . $vehicle['invStock']
+        // . '&invColor=' . $vehicle['invColor'];
 
         $dv .= '<li>';
         $dv .= "<a href='$href'><img src='$vehicle[invThumbnail]' alt='Image of $vehicle[invMake] $vehicle[invModel] on phpmotors.com'></a>";
@@ -91,7 +91,7 @@ function buildVehiclesDisplay($vehicles)
 }
 
 function buildVehicleDetail($details)
-{ 
+{
     $price = "$" . number_format($details['invPrice']);
     $back = "/phpmotors/vehicles?action=classification&classificationName=$details[1]";
 
@@ -111,3 +111,79 @@ function buildVehicleDetail($details)
 
     return $dv;
 }
+
+function vehicleDetailsByInvId($invId)
+{
+    $db = phpmotorsConnect();
+    $sql = 'SELECT invMake, invModel FROM inventory WHERE invId = :invId';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':invId', $invId, PDO::PARAM_STR);
+    $stmt->execute();
+    $partialDetails = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+
+    // returns invMake, invModel
+    return $partialDetails;
+}
+
+
+// #region Review Specific Functions
+
+function buildReviewsView()
+{
+    $clientId = $_SESSION['clientData']['clientId'];
+    $reviews = getReviewsByClientId(3); //!! remove hard coded 3 !!
+
+    echo '<h2>Manage Your Reviews</h2>';
+
+    foreach ($reviews as $review => $r) {
+        # code...
+        echo $r['reviewText'] .
+            ' <a href="/phpmotors/reviews?action=review-edit&reviewId=' . $r["reviewId"] . '">Edit</a>
+         | <a href="/phpmotors/reviews?action=review-del&reviewId=' . $r["reviewId"] . '">Delete</a>
+        <br/>';
+    }
+    // echo print_r($reviews);
+    // use the clientId to get the reviews via the model based on the clientId
+
+    // make, model, review date, edit btn, delete btn, (need to pass reviewId to button, need to pass reviewText to button)
+}
+
+
+function getReviewsByClientId($clientId)
+{
+    $db = phpmotorsConnect();
+    // $sql = 'SELECT * FROM reviews WHERE clientId = :clientId';
+    $sql = 'SELECT reviews.*, inventory.invMake, inventory.invModel FROM reviews JOIN inventory USING(invId) WHERE clientId = :clientId';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':clientId', $clientId, PDO::PARAM_STR);
+    $stmt->execute();
+    $reviews = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+
+    // returns reviews ARRAY of REVIEWS =>  reviewId, reviewText, reviewDate, invId, clientId, invMake, invModel
+    return $reviews;
+}
+
+function getReviewByReviewId($reviewId)
+{
+    $db = phpmotorsConnect();
+    $sql = 'SELECT reviews.*, inventory.invMake, inventory.invModel FROM reviews JOIN inventory USING(invId) WHERE reviewId = :reviewId';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':reviewId', $reviewId, PDO::PARAM_STR);
+    $stmt->execute();
+    $review = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+
+    // returns reviewId, reviewText, reviewDate, invId, clientId, invMake, invModel
+
+    // print_r($review);
+
+
+    return $review;
+
+
+}
+
+
+// #endregion

@@ -48,17 +48,19 @@ if (isset($_SESSION['updateMessage'])) {
                 <li>Last name: <em>" . $_SESSION['clientData']['clientLastname'] . "</em></li>
                 <li>Email: <em>" . $_SESSION['clientData']['clientEmail'] . "</em></li>
             </ul>
-        <div class='user-mangement'>
+        <div class='user-management'>
             <h2>Account Management</h2>
             <h3>Use this link to update your account information.</h3>
             <a href='/phpmotors/accounts?action=user-management'>Update Account Information</a>
         </div>
             ";
-
         if ($_SESSION['clientData']['clientLevel'] > 1) {
             echo "<div class='vehicle-management'><h2>Inventory Management</h2><h3>Use this link to manage the inventory. </h3><a href='/phpmotors/vehicles'>Vehicle Management</a></div>";
         };
+        // Add Users REVIEW MANAGEMENT section
 
+        buildReviewsView();
+        
         ?>
     </main>
     <?php

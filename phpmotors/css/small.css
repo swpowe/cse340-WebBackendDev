@@ -302,3 +302,11 @@ input.invalid {
   /* max-width: 20%; */
 }
 
+
+
+
+/* REVIEW */
+.review-edit-form h1 {
+  width: 100vw;
+}
+

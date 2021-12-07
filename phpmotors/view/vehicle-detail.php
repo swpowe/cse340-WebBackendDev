@@ -8,7 +8,7 @@ if (isset($_SESSION['message'])) {
     $message = $_SESSION['message'];
 }
 require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/model/vehicles-model.php';
-$details = getInvItemInfo(1);
+$details = getInvItemInfo(1); //!! hard coded?? Needed??
 ?>
 
 <!DOCTYPE html>
@@ -44,6 +44,7 @@ $details = getInvItemInfo(1);
         <!-- !! move this into the function that builds the view? -->
         <section class="reviews">
             <hr>
+            <p><?php $details?> </p>
             <h2>Customer Reviews</h2>
             <h2>Review the <car-name></h2>
             <div class="review">
