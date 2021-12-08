@@ -3,11 +3,12 @@
 
 //>> Insert a review <<
 function addReview($reviewText, $invId, $clientId) {
+    // filter input from passed form
+    
     $db = phpmotorsConnect();
-
     // !! Testing Only 
-    // $reviewText = 'This is my first review.';
-    // $invId = 3;
+    // $reviewText = 'This is a brand new review.';
+    // $invId = 2;
     // $clientId = 3;
 
     $sql = 'INSERT INTO reviews (reviewText, reviewDate, invId, clientId)

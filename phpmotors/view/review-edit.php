@@ -38,13 +38,16 @@
                 $html = "<section class='review-edit-form'>";
                 $html .= "<h1>" .$reviewDetails[0]['invMake']." " .$reviewDetails[0]['invModel']." Review</h1>";
                 $html .= "<h2>Reviewed on " .$timestamp. "</h2>";
-                $html .= "<form action='/phpmotors/reviews?action=review-update' method='POST'>"; //!! update to hit index update
+                $html .= "<form action='/phpmotors/reviews?action=review-update&reviewId='".$reviewDetails[0]['reviewId']." method='POST'>"; //!! update to hit index update
                 $html .= "<label for='review-text-box'>Review Text</label>";
-                $html .= "<input type='text' id='review-text-box' value='" .$reviewDetails[0]['reviewText']. "'></input>";
+                $html .= "<textarea rows='5' cols='60' type='text' id='review-text-box' name='review-text-box'>" .$reviewDetails[0]['reviewText']. "</textarea>";
                 $html .= "<button type='submit'>Update</button>";
+                $html .= "<input type='hidden' id='reviewId' name='reviewId' value='". $reviewDetails[0]['reviewId']."'>";
                 $html .= "</form>";   
                 $html .= "</section>";   
                 echo $html;
+
+                // !! Can't tell if post is sending anythning. POST seems to be a single arry of "1" !!??
                 
             }else {
                 echo '<h1>No details? </h1>';

@@ -7,8 +7,11 @@ if (isset($_SESSION['message'])) {
     echo 'problem';
     $message = $_SESSION['message'];
 }
+
+require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/library/functions.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/model/vehicles-model.php';
 $details = getInvItemInfo(1); //!! hard coded?? Needed??
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -42,27 +45,17 @@ $details = getInvItemInfo(1); //!! hard coded?? Needed??
         } ?>
         <!--!! Build out function that builds reviews -->
         <!-- !! move this into the function that builds the view? -->
-        <section class="reviews">
+        <!-- <section class="reviews">
             <hr>
-            <p><?php $details?> </p>
-            <h2>Customer Reviews</h2>
-            <h2>Review the <car-name></h2>
-            <div class="review">
-                <form action="" class="review-form">
-                <label for="username">
-                    Screen Name:
-                    <input id="username" type="text" value="USERNAME" readonly>
-                </label>
-                <label for="review-text">
-                    Review:
-                    <input type="text" id="review-text">
-                </label>
-                <button type="submit">Submit Review</button>
-                </form>
 
-                <p>Be the first to write a review.</p>
-            </div>
-        </section>
+            <h2>Customer Reviews</h2>
+            
+            <?php 
+                // echo $_SESSION['vehicleData']['invId'];
+                // echo buildAddReviewView(); 
+                // echo buildPreviewsReviews();
+            ?>
+        </section> -->
     </main>
     <?php
     require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/components/footer.php'

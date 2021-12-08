@@ -19,12 +19,34 @@ if ($action == NULL) {
 
 switch ($action) {
     case 'review-add': //### Add a new review ###
-        $added = addReview("this is my 2nd review", 3, 3);
-        if ($added === 1) {
-            echo '<h1>Review added</h1>';
+        // save inputs to variables
+        $invId = $_SESSION['vehicleData']['invId']; //!! should I pass these instead?
+        // $invMake = $_SESSION['vehicleData']['invId'];
+        // $invModel = $_SESSION['vehicleData']['invId'];
+        $clientId = $_SESSION['clientData']['clientId'];
+        $reviewText= trim(filter_input(INPUT_POST, 'review-text-box', FILTER_SANITIZE_STRING));
+
+        // send to database
+        $outcome = addReview($reviewText, $invId, $clientId);
+
+        if ($outcome === 1) {
+            // $message = "<h2 class=\"status-good\">New vehicle $clientMake:$clientModel added to the inventory. </h2>";
+            // echo $invId;
+            // echo 'worked';
+            // echo $outcome;
+            // include '../phpmotors/vehicles/?action=vehicle-detail&invId=2';
+            // include '../vehicles?action=vehicle-detail&invId=2';
+            // !! send car details?
+            // include '../vehicles/index.php';
+            header('Location: /phpmotors/vehicles/?action=vehicle-detail&invId=' .$invId);
+            exit;
         } else {
-            echo '<h1>something bad happened </h1>';
+            // $message = "<h2 class=\"status-error\">There was a problem adding $clientMake:$clientModel to the inventory. Please try again. </h2>";
+            // include '../view/add-vehicle.php';
+            echo 'problem';
+            exit;
         }
+        // include('../vehicles?action=vehicle-detail&invId=' .$invId);
         break;
 
     case 'review-edit': //### Deliver a view to edit a review ###
@@ -44,40 +66,42 @@ switch ($action) {
 
         //!! COPIED
         // echo 'Update Info Page';
+        echo print_r(INPUT_POST);
 
         // Filter and store the data
-        $clientFirstname = trim(filter_input(INPUT_POST, 'clientFirstname', FILTER_SANITIZE_STRING)); //!! need reviewId and reviewText only right??
-        $clientLastname = trim(filter_input(INPUT_POST, 'clientLastname', FILTER_SANITIZE_STRING));
-        $clientEmail = trim(filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL));
+        $reviewText = trim(filter_input(INPUT_POST, 'review-text-box', FILTER_SANITIZE_STRING)); //!! need reviewId and reviewText only right??
+        $reviewId = trim(filter_input(INPUT_POST, 'reviewId', FILTER_SANITIZE_STRING)); //!! need reviewId and reviewText only right??
+        // $clientLastname = trim(filter_input(INPUT_POST, 'clientLastname', FILTER_SANITIZE_STRING));
+        // $clientEmail = trim(filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL));
 
 
 
         // Send the data to the model
-        $regOutcome = updateInfo($clientFirstname, $clientLastname, $clientEmail); //!! create in review Model
+        // $outcome = updateReview($reviewText, $reviewId); //!! create in review Model
 
         // Check and report the result
-        if ($regOutcome === 1) {
-            //!! load new page and send message about successful update
-            // // Set Cookie
-            // setcookie('firstname', $clientFirstname, strtotime('+1 year'), '/');
+        // if ($regOutcome === 1) {
+        //     //!! load new page and send message about successful update
+        //     // // Set Cookie
+        //     // setcookie('firstname', $clientFirstname, strtotime('+1 year'), '/');
 
-            // $_SESSION['clientData']['clientFirstname'] = $clientFirstname;
-            // $_SESSION['clientData']['clientLastname'] = $clientLastname;
-            // $_SESSION['clientData']['clientEmail'] = $clientEmail;
+        //     // $_SESSION['clientData']['clientFirstname'] = $clientFirstname;
+        //     // $_SESSION['clientData']['clientLastname'] = $clientLastname;
+        //     // $_SESSION['clientData']['clientEmail'] = $clientEmail;
 
-            // $_SESSION['updateMessage'] = $_SESSION['clientData']['clientFirstname'] . ", your information has been updated.";
-            // header('Location: /phpmotors/accounts/');
-            exit;
-        } else {
-            //!! load new page error message
-            // $updateMessage = "<p>Sorry $clientFirstname, but the registration failed. Please try again.</p>";
-            // include '../view/user-management.php';
-            exit;
-        }
+        //     // $_SESSION['updateMessage'] = $_SESSION['clientData']['clientFirstname'] . ", your information has been updated.";
+        //     // header('Location: /phpmotors/accounts/');
+        //     exit;
+        // } else {
+        //     //!! load new page error message
+        //     // $updateMessage = "<p>Sorry $clientFirstname, but the registration failed. Please try again.</p>";
+        //     // include '../view/user-management.php';
+        //     exit;
+        // }
 
         //!! END COPIED
 
-        echo '<h1>Updated your review</h1>';
+        echo '<h1>Updated your review ID ' .$reviewText . '</h1>';
         break;
 
     case 'review-del-conf': //### Deliver a view to confirm deletion of a review ###

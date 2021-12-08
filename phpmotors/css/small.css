@@ -310,3 +310,41 @@ input.invalid {
   width: 100vw;
 }
 
+ul.review-list {
+  /* background-color: blue; */
+  padding-left: 20px;
+  text-decoration: dotted;
+}
+
+.review-button {
+  /* background-color: blue; */
+  min-width: 45%;
+  border-radius: 5px;
+}
+
+.review-button:hover {
+  cursor: pointer;
+}
+
+.review-list {
+  /* background-color: pink; */
+  /* padding-top: 15px; */
+  /* padding: 15px; */
+  /* margin: 20px; */
+  list-style-type: none;
+}
+
+.review-item {
+  background-color: yellow;
+  /* margin: 20px; */
+  margin: 15px;
+  padding: 20px;
+}
+
+.review-item p {
+  background-color: white;
+  padding: 10px 5px;
+  text-align: start;
+  /* margin: 10px; */
+}
+

@@ -97,9 +97,9 @@ function buildVehicleDetail($details)
 
     //!! need to update array reference from index to named
     $dv = '<section class="detail-view">';
-    $dv .= "<h1>$details[invMake] $details[invModel]</h1>";
+    $dv .= "<h1><span id='vehicle-make'>$details[invMake]</span> <span id='vehicle-model'>$details[invModel]</span></h1>";
     $dv .= "<div class='detail-view-details'>";
-    $dv .= "<img class='detail-view-image' src='$details[invImage]' alt='Image of $vehicle[invMake] $vehicle[invModel] on phpmotors.com'>"; // img url
+    $dv .= "<img class='detail-view-image' src='$details[invImage]' alt='Image of $details[invMake] $details[invModel] on phpmotors.com'>"; // img url
     $dv .= "<h2 >$details[invMake] $details[invModel] Details</h2>"; //!! NEED to change h3 styles so this works and isn't huge!
     $dv .= "<h3>$details[invDescription]</h3>";
     $dv .= "<h3>Price $price</h3>";
@@ -108,6 +108,16 @@ function buildVehicleDetail($details)
     // $dv .= "<a href='$back'>Back</a>";
     $dv .= "</div>";
     $dv .= "</section>";
+
+    // add 
+    $dv .= buildAddReviewView();
+    // add review here?
+    $dv .= buildPreviewsReviews($details['invId']);
+    // ??
+
+    $_SESSION['vehicleData']['invId'] = $details['invId'];
+    $_SESSION['vehicleData']['invMake'] = $details['invMake'];
+    $_SESSION['vehicleData']['invModel'] = $details['invModel'];
 
     return $dv;
 }
@@ -132,17 +142,27 @@ function vehicleDetailsByInvId($invId)
 function buildReviewsView()
 {
     $clientId = $_SESSION['clientData']['clientId'];
-    $reviews = getReviewsByClientId(3); //!! remove hard coded 3 !!
+    $reviews = getReviewsByClientId($clientId); //!! remove hard coded 3 !!
+
 
     echo '<h2>Manage Your Reviews</h2>';
+    echo '<ul class="user-review-list">';
 
     foreach ($reviews as $review => $r) {
+        $timestamp = date('d M, Y', strtotime($r["reviewDate"]));
         # code...
-        echo $r['reviewText'] .
+        echo '<li>' .
+            $r['invMake'] . ' ' . $r['invModel'] . ' (Reviewed on ' . $timestamp . '): ' .
             ' <a href="/phpmotors/reviews?action=review-edit&reviewId=' . $r["reviewId"] . '">Edit</a>
          | <a href="/phpmotors/reviews?action=review-del&reviewId=' . $r["reviewId"] . '">Delete</a>
-        <br/>';
+        </li>';
+
+        // echo $r['reviewText'] .
+        //     ' <a href="/phpmotors/reviews?action=review-edit&reviewId=' . $r["reviewId"] . '">Edit</a>
+        //  | <a href="/phpmotors/reviews?action=review-del&reviewId=' . $r["reviewId"] . '">Delete</a>
+        // <br/>';
     }
+    echo '</ul>';
     // echo print_r($reviews);
     // use the clientId to get the reviews via the model based on the clientId
 
@@ -181,8 +201,102 @@ function getReviewByReviewId($reviewId)
 
 
     return $review;
+}
+
+function getReviewsByInvId($invId)
+{
+    $db = phpmotorsConnect();
+    $sql = 'SELECT reviews.*, clients.clientFirstname, clients.clientLastname  FROM reviews JOIN clients USING(clientId)  WHERE invId = :invId';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':invId', $invId, PDO::PARAM_STR);
+    $stmt->execute();
+    $reviews = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+
+    // returns reviewId, reviewText, reviewDate, invId, clientId, invMake, invModel
+
+    // print_r($reviews);
+
+    return $reviews;
+}
+
+function buildAddReviewView()
+{
+    $make = $_SESSION['vehicleData']['invMake'];
+    $model = $_SESSION['vehicleData']['invModel'];
+
+    $username = substr($_SESSION['clientData']['clientFirstname'], 0, 1)
+        . strtolower($_SESSION['clientData']['clientLastname']);
+    $html = "<section class='reviews'><hr><h2>Customer Reviews</h2>";
+    $html .= "<h3>Review the " . $make . " " . $model . "</h3>";
+    $html .= "<div class='review'>";
+    $html .= '<form class="review-form" action="/phpmotors/reviews/?action=review-add" method="POST">';
+    $html .= '<label for="username">Screen Name: ';
+    $html .= '<input id="username" type="text" value="' . $username . '" readonly>';
+    $html .= '</label>';
+    $html .= '<label for="review-text"> Review: ';
+    $html .= "<textarea rows='5' cols='60' type='text' id='review-text-box' name='review-text-box'></textarea>";
+    $html .= '<button type="submit" class="review-button">Submit Review</button>';
+    $html .= '</form>';
+    $html .= '</div>';
+    $html .= '</section>';
+
+    // change to if statement. If no reviews, return be the first to write review else return everything
+
+    return $html;
 
 
+
+
+    // <h2>Review the <car-name></h2>
+    // <div class="review">
+    //     <form action="/phpmotors/reviews?action=review-add" class="review-form">
+    //         <!-- update form action passing in info from form -->
+    //     <label for="username">
+    //         Screen Name:
+    //         <input id="username" type="text" value="USERNAME" readonly>
+    //     </label>
+    //     <label for="review-text">
+    //         Review:
+    //         <input type="text" id="review-text">
+    //     </label>
+    //     <button type="submit">Submit Review</button>
+    //     </form>
+
+    //     <p>Be the first to write a review.</p>
+    // </div>
+
+    // echo '<h1>Build Review Function </h1>';
+}
+
+function buildPreviewsReviews($invId)
+{
+    $reviews = getReviewsByInvId($invId);
+
+
+    if (sizeof($reviews) <= 0) {
+        $html = '<p class="first-review"><em>Be the first to write a review.</em></p>';
+    } else {
+        $html = "<ul class='review-list'>";
+
+        foreach ($reviews as $review => $r) {
+            $username = substr($r['clientFirstname'], 0, 1)
+                . strtolower($r['clientLastname']);
+
+            $timestamp = date('d M, Y', strtotime($r["reviewDate"]));
+
+            $html .= "
+            <li class='review-item'>
+            <h3>Reviewed by  " .$username. " on " .$timestamp. "<h3>
+            <p>
+            $r[reviewText]
+            </p>
+            </li>";
+        }
+        $html .= "</li>";
+    }
+
+    return $html;
 }
 
 

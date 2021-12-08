@@ -59,7 +59,7 @@ if (isset($_SESSION['updateMessage'])) {
         };
         // Add Users REVIEW MANAGEMENT section
 
-        buildReviewsView();
+        buildReviewsView(); //!! do I have to pull this out??
         
         ?>
     </main>
