@@ -24,7 +24,7 @@ switch ($action) {
         // $invMake = $_SESSION['vehicleData']['invId'];
         // $invModel = $_SESSION['vehicleData']['invId'];
         $clientId = $_SESSION['clientData']['clientId'];
-        $reviewText= trim(filter_input(INPUT_POST, 'review-text-box', FILTER_SANITIZE_STRING));
+        $reviewText = trim(filter_input(INPUT_POST, 'review-text-box', FILTER_SANITIZE_STRING));
 
         // send to database
         $outcome = addReview($reviewText, $invId, $clientId);
@@ -38,7 +38,7 @@ switch ($action) {
             // include '../vehicles?action=vehicle-detail&invId=2';
             // !! send car details?
             // include '../vehicles/index.php';
-            header('Location: /phpmotors/vehicles/?action=vehicle-detail&invId=' .$invId);
+            header('Location: /phpmotors/vehicles/?action=vehicle-detail&invId=' . $invId);
             exit;
         } else {
             // $message = "<h2 class=\"status-error\">There was a problem adding $clientMake:$clientModel to the inventory. Please try again. </h2>";
@@ -66,7 +66,6 @@ switch ($action) {
 
         //!! COPIED
         // echo 'Update Info Page';
-        echo print_r(INPUT_POST);
 
         // Filter and store the data
         $reviewText = trim(filter_input(INPUT_POST, 'review-text-box', FILTER_SANITIZE_STRING)); //!! need reviewId and reviewText only right??
@@ -77,43 +76,67 @@ switch ($action) {
 
 
         // Send the data to the model
-        // $outcome = updateReview($reviewText, $reviewId); //!! create in review Model
+        $outcome = updateReview($reviewText, $reviewId); //!! create in review Model
 
-        // Check and report the result
-        // if ($regOutcome === 1) {
-        //     //!! load new page and send message about successful update
-        //     // // Set Cookie
-        //     // setcookie('firstname', $clientFirstname, strtotime('+1 year'), '/');
+        echo $outcome;
 
-        //     // $_SESSION['clientData']['clientFirstname'] = $clientFirstname;
-        //     // $_SESSION['clientData']['clientLastname'] = $clientLastname;
-        //     // $_SESSION['clientData']['clientEmail'] = $clientEmail;
+        if ($outcome === 1) {
+            //!! load previous page and send message about successful update
+            // http://localhost/phpmotors/reviews/?action=review-edit&reviewId=11
+            // header('Location: /phpmotors/vehicles/?action=vehicle-detail&invId=' .$_SESSION['vehicleData']['invId']); // don't have the invId?
+            // Set message. Show message based on previous page?
 
-        //     // $_SESSION['updateMessage'] = $_SESSION['clientData']['clientFirstname'] . ", your information has been updated.";
-        //     // header('Location: /phpmotors/accounts/');
-        //     exit;
-        // } else {
-        //     //!! load new page error message
-        //     // $updateMessage = "<p>Sorry $clientFirstname, but the registration failed. Please try again.</p>";
-        //     // include '../view/user-management.php';
-        //     exit;
-        // }
+            //!! will edits only happen on users management page?
+            $_SESSION['messageData']['review'] = "Your review has been updated successfully."; //!! Message on what was updated
+            header('Location:/phpmotors/accounts/');
+            exit;
+        } else {
+            //!! load new page error message
+            // $updateMessage = "<p>Sorry $clientFirstname, but the registration failed. Please try again.</p>";
+            // include '../view/user-management.php';
+            exit;
+        }
 
-        //!! END COPIED
-
-        echo '<h1>Updated your review ID ' .$reviewText . '</h1>';
+        // echo '<h1>Updated your review ID ' .$reviewText .  $reviewId. '</h1>';
         break;
-
-    case 'review-del-conf': //### Deliver a view to confirm deletion of a review ###
-
-        echo '<h1>Confirmation you want to delete your review?</h1>';
-        break;
-
-    case 'review-del': //### Handle the review deletion ###
+    case 'review-delete-confirm': //### Handle the review deletion ###
         $reviewId = filter_input(INPUT_GET, 'reviewId', FILTER_SANITIZE_STRING);
         // echo '<h1>Confirm review deletion. Review Id = ' .$reviewId.'.</h1>';
         $reviewDetails = getReviewByReviewId($reviewId); //!! FAILS??
         include '../view/review-delete.php';
+        break;
+
+
+
+    case 'review-delete': //### Deliver a view to confirm deletion of a review ###
+
+        // Filter and store the data
+        $reviewId = trim(filter_input(INPUT_POST, 'reviewId', FILTER_SANITIZE_STRING)); //!! need reviewId and reviewText only right??
+        // echo 'review ID 2: ' . $reviewId;
+        // Send the data to the model
+        $outcome = deleteReview($reviewId); //!! create in review Model
+
+        echo $outcome;
+
+        if ($outcome === 1) {
+            //!! load previous page and send message about successful update
+            // http://localhost/phpmotors/reviews/?action=review-edit&reviewId=11
+            // header('Location: /phpmotors/vehicles/?action=vehicle-detail&invId=' .$_SESSION['vehicleData']['invId']); // don't have the invId?
+            // Set message. Show message based on previous page?
+
+            //!! will edits only happen on users management page?
+            $_SESSION['messageData']['review'] = "Your review has been deleted successfully."; //!! Message on what was updated
+            header('Location:/phpmotors/accounts/');
+            exit;
+        } else {
+            //!! load new page error message
+            // $updateMessage = "<p>Sorry $clientFirstname, but the registration failed. Please try again.</p>";
+            // include '../view/user-management.php';
+            echo 'Del Failed';
+            exit;
+        }
+
+        // echo '<h1>Updated your review ID ' .$reviewText .  $reviewId. '</h1>';
         break;
 
 

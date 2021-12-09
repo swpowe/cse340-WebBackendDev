@@ -26,6 +26,41 @@ function addReview($reviewText, $invId, $clientId) {
     return $rowsChanged;
 }
 
+function updateReview($reviewText, $reviewId) {
+
+    $db = phpmotorsConnect();
+
+    $sql = 'UPDATE reviews SET reviewText = :reviewText WHERE reviewId = :reviewId';
+
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':reviewText', $reviewText, PDO::PARAM_STR);
+    $stmt->bindValue(':reviewId', $reviewId, PDO::PARAM_STR);
+
+    $stmt->execute();
+
+    $rowsChanged = $stmt->rowCount();
+    $stmt->closeCursor();
+
+    return $rowsChanged;
+}
+
+function deleteReview($reviewId) {
+
+    $db = phpmotorsConnect();
+
+    $sql = 'DELETE FROM reviews WHERE reviewId = :reviewId';
+
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':reviewId', $reviewId, PDO::PARAM_STR);
+
+    $stmt->execute();
+
+    $rowsChanged = $stmt->rowCount();
+    $stmt->closeCursor();
+
+    return $rowsChanged;
+}
+
 
 //>> Get reviews for a specific inventory item <<
 
@@ -34,5 +69,3 @@ function addReview($reviewText, $invId, $clientId) {
 //Get a specific review
 //Update a specific review
 //Delete a specific review
-
-?>

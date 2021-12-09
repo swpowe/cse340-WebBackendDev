@@ -34,6 +34,8 @@ if (isset($_SESSION['updateMessage'])) {
     </nav>
     <main>
         <?php
+        // $_SESSION['messageData']['review'] = 'Initial Set';
+        
         echo "
         <h1>" . $_SESSION['clientData']['clientFirstname'] . " "
             . $_SESSION['clientData']['clientLastname']
@@ -59,8 +61,10 @@ if (isset($_SESSION['updateMessage'])) {
         };
         // Add Users REVIEW MANAGEMENT section
 
+        echo "<h2>Manage Your Reviews</h2>
+        <h3 class='review-msg'>" .$_SESSION['messageData']['review']. "</h3>";
         buildReviewsView(); //!! do I have to pull this out??
-        
+        $_SESSION['messageData']['review'] = '';
         ?>
     </main>
     <?php

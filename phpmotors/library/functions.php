@@ -110,7 +110,12 @@ function buildVehicleDetail($details)
     $dv .= "</section>";
 
     // add 
-    $dv .= buildAddReviewView();
+    if (isset($_SESSION['loggedin'])) {
+        $dv .= buildAddReviewView();
+    } else {
+        $dv .= "<p>You need to be logged in to leave a review</p>";
+    }
+
     // add review here?
     $dv .= buildPreviewsReviews($details['invId']);
     // ??
@@ -145,7 +150,7 @@ function buildReviewsView()
     $reviews = getReviewsByClientId($clientId); //!! remove hard coded 3 !!
 
 
-    echo '<h2>Manage Your Reviews</h2>';
+    // echo '<h2>Manage Your Reviews</h2>';
     echo '<ul class="user-review-list">';
 
     foreach ($reviews as $review => $r) {
@@ -154,7 +159,7 @@ function buildReviewsView()
         echo '<li>' .
             $r['invMake'] . ' ' . $r['invModel'] . ' (Reviewed on ' . $timestamp . '): ' .
             ' <a href="/phpmotors/reviews?action=review-edit&reviewId=' . $r["reviewId"] . '">Edit</a>
-         | <a href="/phpmotors/reviews?action=review-del&reviewId=' . $r["reviewId"] . '">Delete</a>
+         | <a href="/phpmotors/reviews?action=review-delete-confirm&reviewId=' . $r["reviewId"] . '">Delete</a>
         </li>';
 
         // echo $r['reviewText'] .
@@ -287,7 +292,7 @@ function buildPreviewsReviews($invId)
 
             $html .= "
             <li class='review-item'>
-            <h3>Reviewed by  " .$username. " on " .$timestamp. "<h3>
+            <h3>Reviewed by  " . $username . " on " . $timestamp . "<h3>
             <p>
             $r[reviewText]
             </p>
