@@ -113,7 +113,7 @@ function buildVehicleDetail($details)
     if (isset($_SESSION['loggedin'])) {
         $dv .= buildAddReviewView();
     } else {
-        $dv .= "<p>You need to be logged in to leave a review</p>";
+        $dv .= "<p>You must <a href='/phpmotors/accounts?action=login'>login</a> to write a review.</p>";
     }
 
     // add review here?
