@@ -1,0 +1,85 @@
+
+
+@media only screen and (min-width: 38rem) {
+#welcomeMsg {
+    font-size: 1.1rem;
+}
+#wrapper {
+    width: 100%;
+    border-radius: 10px 10px 10px 10px;
+    background-color: #ffffff;
+}
+body {
+    width: 70%;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #4c96d7;
+    border-radius: 10px 10px 10px 10px;
+    padding: 5px 5px 5px 5px;
+}
+html {
+    background-image: url(../images/site/checkerboard.jpg);
+    background-size: 300px 300px;
+}
+nav ul li {
+    margin-left: .09rem;
+    margin-right: .09rem;
+}
+nav ul li a {
+    margin: .15rem;
+}
+#delorean-div-txt {
+    margin-left: 20px;
+}
+#delorean-div-txt h3 {
+    font-size: 1.2rem;
+}
+
+#delorean-div-txt h2 {
+    font-size: 1.5rem;
+}
+#welcome-text {
+    padding-left: 10px;
+}
+
+/*------------------- Bottom of Main ---------------------*/
+
+#bottom-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#upgrades-div-full {
+    width: 48%;
+    margin: auto;
+    text-align: center;
+}
+#upgrades-div {
+    height: 250px;
+}
+  #upgrades-div > div > div {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+  }
+  #upgrades-title {
+      width: 100%;
+  }
+  
+  .box { margin: 5px; }
+  .box1 { background-color: #4c96d7; }
+  .box2 { background-color: #4c96d7; }
+  .box3 { background-color: #4c96d7; }
+  .box4 { background-color: #4c96d7; }
+
+#reviews-div {
+    width: 48%;
+}
+#reviews-div ul{
+    padding-left: 20px;
+}
+#reviews-div ul li {
+    padding: 5px;
+}
+}

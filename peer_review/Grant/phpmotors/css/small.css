@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+html {
+    background: repeating-conic-gradient(black 0% 25%, transparent 0% 50%)50% / 80px 80px;
+    font-family: 'Roboto Mono', monospace;
+}
+
+body {
+    max-width: 95%;
+    margin: 0 auto;
+    border: solid 5px #4c96d7;
+    border-radius: 3px;
+    background: white;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 30px;
+}
+
+#logo {
+    width: 150px;
+    height: auto;
+    padding: 10px;
+}
+
+header>h3>a {
+    text-decoration: none;
+    color: black;
+}
+
+nav {
+    background-color: #3a3a3a;
+    padding: 10px 0px;
+}
+
+nav>ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+}
+
+nav>ul>li {
+    padding-left: 2%;
+    border-top: solid white 1px;
+    border-bottom: solid white 1px;
+}
+
+nav>ul>li>a {
+    text-decoration: none;
+    color: black;
+}
+
+nav>ul>li>a {
+    color: white;
+    text-decoration: none;
+    font-size: 150%;
+}
+
+nav>ul>li>a.active {
+    background-color: #4c96d7;
+    color: black;
+}
+
+main,
+footer {
+    font-size: .75rem;
+}
+
+.wrapper {
+    padding: 0px 15px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto auto;
+}
+
+.wrapper>img {
+    max-width: 100%;
+
+}
+
+.upgradeTabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.upgradebox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.upgradebox>img {
+    width: 50px;
+    height: 50px;
+    border: 1px black solid;
+    padding: 10px 55px;
+    background-color: #4c96d7;
+    justify-self: center;
+}
+
+footer>p {
+    text-align: center;
+}
+
+#inv-display {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#inv-display li {
+    margin-bottom: .5em;
+    border: 1px #ccc solid;
+    list-style-type: none;
+    flex: 1 1 auto;
+}
+
+#inv-display li img {
+    max-width: 100%;
+}
+
+#detail-page {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    text-align: center;
+}
+
+@media only screen and (min-width: 420px) {
+    body {
+        max-width: 85%;
+    }
+
+    nav {
+        padding: 1px 0px;
+    }
+
+    nav>ul {
+        flex-direction: row;
+    }
+
+    nav>ul>li {
+        border: none;
+        font-size: 65%;
+    }
+
+    a.active {
+        padding: 20px 5px;
+    }
+
+    main,
+    footer {
+        font-size: 1rem;
+    }
+
+    .wrapper {
+        padding: 0px 15px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto auto auto auto;
+    }
+
+    .wrapper>h1 {
+        grid-row: 1/2;
+        grid-column: 1/3;
+    }
+
+    .wrapper>img {
+        position: relative;
+        grid-row: 3/4;
+        grid-column: 1/3;
+    }
+
+    .adtext {
+        grid-column: 1/2;
+        grid-row: 2/3;
+    }
+
+    .upgrades {
+        grid-row: 4/5;
+    }
+
+    .reviews {
+        grid-row: 4/5;
+        grid-column: 2/3;
+    }
+}
+
+@media only screen and (min-width: 730px) {
+    body {
+        max-width: 75%;
+    }
+
+    nav>ul>li {
+        font-size: 100%;
+    }
+
+    #inv-display {
+        flex-flow: row wrap;
+        justify-content: flex-start;
+    }
+
+    #inv-display h2 {
+        font-size: 1rem;
+    }
+
+    #inv-display li {
+        max-width: 200px;
+        flex: 1 0 auto;
+        text-align: center;
+        height: 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    #inv-display div {
+        width: 100%;
+    }
+
+    #detail-main {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+    }
+
+    #detail-page {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        width: auto;
+        grid-row: 2/3;
+    }
+
+    #detail-page img {
+        grid-column: 1/2;
+        max-width: 450px;
+    }
+
+    #detail-info {
+        grid-column: 2/3;
+        text-align: left;
+    }
+}

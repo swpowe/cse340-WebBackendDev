@@ -1,0 +1,350 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+/* SMALL */
+html,
+body,
+nav {
+  /* background-color: blue; */
+  font-size: 0.65rem; /*!! does this fix the font problem */
+  min-width: 100%;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 3.5vw;
+  padding-bottom: 1.5vh;
+  font-size: 0.95rem;
+}
+
+header img {
+  width: 45%;
+}
+
+header h2 {
+  padding-top: 20px;
+  position: relative;
+  bottom: 10px;
+}
+
+header > h1 > span {
+  color: #4c96d7;
+  padding-right: 5px;
+}
+
+header > h1 > span > a {
+  text-decoration: none;
+}
+
+nav {
+  background-color: gray;
+  color: black;
+  min-width: 100%;
+  padding: 10px;
+}
+
+nav ul {
+  display: flex;
+  justify-content: flex-start;
+}
+
+nav ul li {
+  list-style: none;
+}
+
+nav a {
+  border-radius: 5px;
+  color: black;
+  font-size: 4vw;
+  padding: 0.78vw 0.825vw;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: black;
+  background-color: #4c96d7;
+  text-decoration: none;
+  padding: 13px 0.825vw;
+}
+
+main {
+  margin: 15px 10px;
+  word-spacing: 3px;
+}
+
+main h1 {
+  font-size: 1.85rem;
+  margin-bottom: 5px;
+}
+
+main img {
+  width: 80%;
+}
+
+.error-msg {
+  color: red;
+  padding: 25px;
+}
+
+.about {
+  color: blue;
+  font-size: 0.875rem;
+  padding-top: 15px;
+}
+
+.about ul {
+  margin-top: -5px;
+}
+
+.about ul li {
+  padding: 0px;
+  list-style-type: none;
+}
+
+.about img {
+  position: relative;
+  right: -20px;
+  bottom: 45px;
+  z-index: -1;
+  margin-bottom: -60px;
+}
+
+.buy-now {
+  padding: 30px;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.buy-now button {
+  border-radius: 5px;
+  background-color: #4c96d7;
+  padding: 10px 30px;
+  border: none;
+  box-shadow: 2px 2px 5px black;
+}
+
+h2 {
+  font-size: 1.25rem;
+  padding-bottom: 5px;
+}
+
+.review-list ul {
+  padding-left: 20px;
+}
+
+.review-list ul li {
+  padding: 5px 0;
+  font-size: 1rem;
+}
+
+.upgrade-options {
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0 auto;
+}
+
+.upgrades h2 {
+  font-size: 1.5rem;
+  padding-top: 10px;
+}
+
+.upgrades button {
+  border: none;
+  border-radius: 2px;
+  background-color: #4c96d7;
+  margin: 5px;
+  box-shadow: 2px 2px 5px black;
+}
+
+.upgrades img {
+  width: 35%;
+}
+
+.upgrades a {
+  display: block;
+}
+
+hr {
+  height: 2px;
+  background-color: black;
+  border: none;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 15px 10px;
+  font-size: 1rem;
+}
+
+/* Form Styles */
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+}
+
+form label {
+  font-size: 1.25rem;
+  /* margin-top: 5px; */
+  margin-bottom: 2px;
+}
+
+form input {
+  margin-bottom: 8px;
+  padding: 5px;
+}
+
+form button {
+  margin: 5px 0;
+  max-width: 25%;
+  padding: 5px;
+}
+
+.status-good {
+  background-color: #008000;
+  color: white;
+  max-width: 300px;
+  margin-bottom: 10px;
+}
+
+.status-error {
+  background-color: red;
+  max-width: 300px;
+  margin-bottom: 10px;
+}
+
+/* Login View */
+.login-signup-link {
+  color: #0f538f;
+  font-size: 1.25rem;
+  padding: 5px;
+}
+
+input.invalid {
+  background-color: pink;
+}
+
+/* Classification View */
+#inv-display {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#inv-display li {
+  margin-bottom: 2.5em;
+  border: 1px #ccc solid;
+  border-radius: 5px;
+  box-shadow: 3px 3px 4px gray;
+  list-style-type: none;
+  flex: 1 1 auto;
+  padding: 5px;
+  min-height: 230px;
+}
+
+#inv-display li img {
+  max-width: 90%;
+  /* min-height: 230px; */
+}
+
+#inv-display hr {
+  margin-top: 10px;
+}
+
+#inv-display h1 {
+  font-size: 1.85rem;
+}
+
+#inv-display h2 {
+  font-size: 1.5rem;
+  margin-top: 10px;
+  
+}
+
+#inv-display span {
+  font-size: 1rem;
+}
+
+/* Detail Page View */
+
+.detail-view {
+  /* display: grid; */
+  font-size: 1rem;
+  padding: 5px 0;
+}
+
+.detail-view h1 {
+  font-size: 1.85rem;
+}
+
+.detail-view h2 {
+  font-size: 1.5rem;
+}
+
+.detail-view-details h3 {
+  padding: 5px;
+}
+
+.detail-view-details h3:nth-child(odd) {
+  background-color: rgba(222, 216, 216, 0.625);
+}
+
+.detail-view-image {
+  margin: 10px 0;
+  /* max-width: 20%; */
+}
+
+
+
+
+/* REVIEW */
+.review-edit-form h1 {
+  width: 100vw;
+}
+
+ul.review-list {
+  /* background-color: blue; */
+  padding-left: 20px;
+  text-decoration: dotted;
+}
+
+.review-button {
+  /* background-color: blue; */
+  min-width: 45%;
+  border-radius: 5px;
+}
+
+.review-button:hover {
+  cursor: pointer;
+}
+
+.review-list {
+  /* background-color: pink; */
+  /* padding-top: 15px; */
+  /* padding: 15px; */
+  /* margin: 20px; */
+  list-style-type: none;
+}
+
+.review-item {
+  background-color: yellow;
+  /* margin: 20px; */
+  margin: 15px;
+  padding: 20px;
+}
+
+.review-item p {
+  background-color: white;
+  padding: 10px 5px;
+  text-align: start;
+  /* margin: 10px; */
+}
+

@@ -62,9 +62,9 @@ if (isset($_SESSION['updateMessage'])) {
         // Add Users REVIEW MANAGEMENT section
 
         echo "<h2>Manage Your Reviews</h2>
-        <h3 class='review-msg'>" .$_SESSION['messageData']['review']. "</h3>";
+        <p class='review-msg'>" .$_SESSION['messageData']['review']. "</p>";
         buildReviewsView(); //!! do I have to pull this out??
-        $_SESSION['messageData']['review'] = '';
+        $_SESSION['messageData']['review'] = ' ';
         ?>
     </main>
     <?php

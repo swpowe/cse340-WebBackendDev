@@ -1,0 +1,287 @@
+/* ------------------------------ All Views ------------------------------------ */
+
+.messageDiv {
+    font-family: 'Andale Mono', monospace;
+    font-weight: 600;
+    padding-left: 10px;
+    padding-top: 5px;
+    color: #E60000; /* Can't use plain "red" because contrast ratio is slightly below " 4.5 to 1 "*/
+    font-style: italic;
+}
+
+/* ------------------------------ LOGIN ------------------------------------ */
+
+#loginTitle {
+    font-family: 'Andale Mono', monospace;
+    margin-left: 10px;
+    font-size: 2em;
+}
+.form-box {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+}
+form {
+    display: block;
+}
+.form-box label {
+    flex-basis: 1rem;
+    font-family: 'Andale Mono', monospace;
+    font-weight: 600;
+}
+#sign-in-button {
+    width: 95px;
+    padding: 3px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-color: #4c96d7;
+    border: 1px black solid;
+    margin-left: 10px;
+    font-family: 'Andale Mono', monospace;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+#regbtn {
+    width: 90px;
+    padding: 3px;
+    margin: 15px 10px 15px 10px;
+    background-color: #4c96d7;
+    border: 1px black solid;
+    font-family: 'Andale Mono', monospace;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+
+#newAccount {
+    margin-left: 10px;
+
+    padding-bottom: 15px;
+
+}
+.passwordWarning {
+    margin: 5px 0 5px 10px;
+
+}
+/* ------------------------------ ADMIN VIEW ------------------------------------ */
+
+#accountMan {
+    font-family: 'Andale Mono', monospace;
+    padding-left: 5px;
+}
+
+#accountManSub {
+    font-family: 'Andale Mono', monospace;
+    padding: 10px 0px 0px 25px;
+}
+#accountInfoLink {
+    font-family: 'Andale Mono', monospace;
+    padding-left: 25px;
+}
+#updateAccountTitle {
+    font-family: 'Andale Mono', monospace;
+    padding-left: 10px;
+}
+
+.loggedinFullname{
+    font-family: 'Andale Mono', monospace;
+    padding-left: 5px;
+}
+
+.loggedInMessage {
+    font-family: 'Andale Mono', monospace;
+    padding-left: 5px;
+    padding-top: 10px;
+    font-weight: 600;
+}
+#vehicleManageLink {
+    font-family: 'Andale Mono', monospace;
+}
+
+.loggedInInfo {
+    font-family: 'Andale Mono', monospace;
+    padding-left: 25px;
+    padding-top: 10px;
+    font-weight: 600;
+}
+#update-info-button {
+    width: 130px;
+    padding: 3px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-color: #4c96d7;
+    border: 1px black solid;
+    margin-left: 10px;
+    font-family: 'Andale Mono', monospace;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+#update-password-button {
+    width: 165px;
+    padding: 3px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-color: #4c96d7;
+    border: 1px black solid;
+    margin-left: 10px;
+    font-family: 'Andale Mono', monospace;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.adminPrivilegeTitle {
+    font-family: 'Andale Mono', monospace;
+    padding: 10px 0px 0px 5px;
+}
+
+/* ------------------------------ classification.php (view inventory)  ------------------------------------ */
+
+#classificationTitle {
+    font-family: 'Andale Mono', monospace;
+    font-weight: 600;
+    padding-left: 5px;
+}
+
+/* ------------------------------ vehicle-detail.php (view inventory)  ------------------------------------ */
+#vehicleDisplayMain {
+    /* Main Div */
+    font-family: 'Andale Mono', monospace;
+
+}
+#vehicleDisplayMain img {
+   border: 5px solid black;
+   width: 90%;
+}
+#vehicleInfoImgDiv {
+    text-align: center;
+}
+#vehicleTop-LeftDiv {
+    width: 100%;
+}
+#vehicleTop-LeftDiv h1{
+    padding-left: 10px;
+}
+#vehicleTop-LeftDiv p{
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding-left: 10px;
+}
+#vehicleBottom-RightDiv {
+    width: 100%;
+}
+#vehicleBottom-RightDiv h2{
+    padding-left: 10px;
+}
+#vehicleBottom-RightDiv p{
+    padding-left: 15px;
+}
+.vehicleInfoGrayBackground {
+    background-color: #CFCFCF;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+@media only screen and (min-width: 45rem) {
+    #vehicleTop-LeftDiv {
+        width: 50%;
+        float: left;
+        min-height: 300px;
+    }
+    #vehicleBottom-RightDiv {
+        width: 50%;
+        float: right;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 300px;
+    }
+
+    #vehicleBottom-RightDiv h3{
+        padding-left: 15px;
+    }
+    #vehicleDisplayMain {
+        display: flex; /* This makes sure the footer stays at the bottom of the screen. The two divs above weren't registering as being there for some reason. */
+    }
+}
+
+
+/* ------------------------------ Vehicle Management  ------------------------------------ */
+
+#inventoryDisplay {
+    font-family: 'Andale Mono', monospace;
+    font-weight: 600;
+}
+
+/* This is the dropdown list on vehicle management page */
+#classificationList {
+    font-family: 'Andale Mono', monospace;
+    font-weight: 600;
+    margin: 10px 0px 10px 10px;
+}
+#seeInventoryTitle {
+    font-family: 'Andale Mono', monospace;
+    font-weight: 600;
+    padding-left: 10px;
+    margin-top: 10px;
+}
+#seeInventoryText {
+    font-family: 'Andale Mono', monospace;
+    font-weight: 600;
+    padding-left: 10px;
+}
+
+
+
+
+/* ------------------------------ Add Classification  ------------------------------------ */
+#addClassBtn {
+    width: 190px;
+    padding: 3px;
+    margin: 15px 10px 15px 10px;
+    background-color: #4c96d7;
+    border: 1px black solid;
+    font-family: 'Andale Mono', monospace;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* ------------------------------ Add Vehicle ------------------------------------ */
+#addVehicleTitle {
+    font-family: 'Andale Mono', monospace;
+    margin-left: 10px;
+    font-size: 2em;
+}
+#addVehicleWarning {
+    font-family: 'Andale Mono', monospace;
+    font-weight: 600;
+    margin-left: 10px;
+}
+#addVehicleBtn {
+    width: 140px;
+    padding: 3px;
+    margin: 15px 10px 15px 10px;
+    background-color: #4c96d7;
+    border: 1px black solid;
+    font-family: 'Andale Mono', monospace;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+#modVehicleBtn {
+    width: 165px;
+    padding: 3px;
+    margin: 15px 10px 15px 10px;
+    background-color: #4c96d7;
+    border: 1px black solid;
+    font-family: 'Andale Mono', monospace;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+
+
+
+/* label {
+    display: table-cell;
+}
+input {
+    display: table-cell
+} */
