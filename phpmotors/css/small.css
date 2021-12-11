@@ -348,3 +348,13 @@ ul.review-list {
   /* margin: 10px; */
 }
 
+.review-message-error {
+  font-style: italic;
+  color: red;
+}
+
+.review-message-success {
+  font-style: italic;
+  color: green;
+}
+

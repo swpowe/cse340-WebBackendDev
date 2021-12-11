@@ -26,6 +26,18 @@ switch ($action) {
         $clientId = $_SESSION['clientData']['clientId'];
         $reviewText = trim(filter_input(INPUT_POST, 'review-text-box', FILTER_SANITIZE_STRING));
 
+        // !! error checking
+        if (empty($clientId) || empty($reviewText)) {
+            if($invId) {
+                $_SESSION['messageData']['review'] = '<p class="review-message-error">Please provide text for your review.</p>';
+            include '../view/registration.php';
+            header('Location: /phpmotors/vehicles/?action=vehicle-detail&invId=' .$invId);
+            exit;
+            } else {
+                $_SESSION['messageData']['review'] = 'No valid invId provided. Check your session.';
+            }
+        }
+
         // send to database
         $outcome = addReview($reviewText, $invId, $clientId);
 
@@ -38,6 +50,7 @@ switch ($action) {
             // include '../vehicles?action=vehicle-detail&invId=2';
             // !! send car details?
             // include '../vehicles/index.php';
+            $_SESSION['messageData']['review'] = '<p class="review-message-success">Your review has successfully been added.</p>';
             header('Location: /phpmotors/vehicles/?action=vehicle-detail&invId=' . $invId);
             exit;
         } else {

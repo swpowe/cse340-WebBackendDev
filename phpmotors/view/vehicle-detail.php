@@ -43,12 +43,14 @@ session_start();
         <?php if (isset($vehicleDetails)) {
             echo $vehicleDetails;
         } ?>
+
         <!--!! Build out function that builds reviews -->
         <!-- !! move this into the function that builds the view? -->
         <!-- <section class="reviews">
             <hr>
 
             <h2>Customer Reviews</h2>
+            
             
             <?php 
                 // echo $_SESSION['vehicleData']['invId'];
@@ -58,6 +60,7 @@ session_start();
         </section> -->
     </main>
     <?php
+    $_SESSION['messageData']['review'] = ' ';
     require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/components/footer.php'
     ?>
     <!-- <script src="../js/inventory.js"></script> -->

@@ -240,7 +240,8 @@ function buildAddReviewView()
     $html .= '<input id="username" type="text" value="' . $username . '" readonly>';
     $html .= '</label>';
     $html .= '<label for="review-text-box"> Review: ';
-    $html .= "<textarea rows='5' cols='60' id='review-text-box' name='review-text-box'></textarea>";
+    $html .= $_SESSION['messageData']['review'];
+    $html .= "<textarea rows='5' cols='60' id='review-text-box' name='review-text-box' required></textarea>";
     $html .= "</label>";
     
     $html .= '<button id="submit-review-button" type="submit" class="review-button">Submit Review</button>';
