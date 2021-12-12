@@ -60,12 +60,3 @@ function deleteReview($reviewId) {
 
     return $rowsChanged;
 }
-
-
-//>> Get reviews for a specific inventory item <<
-
-
-//Get reviews written by a specific client
-//Get a specific review
-//Update a specific review
-//Delete a specific review
