@@ -302,7 +302,15 @@ input.invalid {
   /* max-width: 20%; */
 }
 
+/* MANAGEMENT PAGE */
+main h2 {
+  padding-top: 15px;
+}
 
+.user-review-list li {
+  list-style: none;
+  padding-bottom: 5px;
+}
 
 
 /* REVIEW */

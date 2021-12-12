@@ -23,7 +23,7 @@
         <?php echo $navList; ?>
     </nav>
     <main>
-        <h1>edit review page</h1>
+        <!-- <h1>edit review page</h1> -->
         <?php
             $username = substr($_SESSION['clientData']['clientFirstname'], 0, 1)
             .strtolower($_SESSION['clientData']['clientLastname']);
@@ -40,16 +40,17 @@
                 $html .= "<h2>Reviewed on " .$timestamp. "</h2>";
                 $html .= "<form action='/phpmotors/reviews/?action=review-update' method='POST'>"; //!! update to hit index update
                 $html .= "<label for='review-text-box'>Review Text</label>";
-                $html .= "<textarea rows='5' cols='60' id='review-text-box' name='review-text-box'>" .$reviewDetails[0]['reviewText']. "</textarea>";
+                $html .= "<p class='review-message-error'>" .$_SESSION['messageData']['review']. "</p>";
+                $html .= "<textarea rows='5' cols='60' id='review-text-box' name='review-text-box' required>" .$reviewDetails[0]['reviewText']. "</textarea>";
                 $html .= "<button type='submit'>Update</button>";
                 $html .= "<input type='hidden' id='reviewId' name='reviewId' value='". $reviewDetails[0]['reviewId']."'>";
                 $html .= "</form>";   
                 $html .= "</section>";   
                 echo $html;
 
-                
+                $_SESSION['messageData']['review'] = '';
             }else {
-                echo '<h1>No details? </h1>';
+                $_SESSION['messageData']['review'] = 'There was a problem getting that review.';
             }
         // echo '<h2>Review Id Passed: '.$reviewId .'<h2>';
         ?>

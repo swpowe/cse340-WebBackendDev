@@ -86,12 +86,16 @@ switch ($action) {
         // $clientLastname = trim(filter_input(INPUT_POST, 'clientLastname', FILTER_SANITIZE_STRING));
         // $clientEmail = trim(filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL));
 
+        if($reviewText === '') {
+            $_SESSION['messageData']['review'] = "Review text was empty. Please provide a review."; //!! Message on what was updated
+            // include '../view/user-management.php';
+            header('Location: /phpmotors/reviews/?action=review-edit&reviewId=' .$reviewId);
+            exit;
+        }
 
 
         // Send the data to the model
         $outcome = updateReview($reviewText, $reviewId); //!! create in review Model
-
-        echo $outcome;
 
         if ($outcome === 1) {
             //!! load previous page and send message about successful update
@@ -106,7 +110,9 @@ switch ($action) {
         } else {
             //!! load new page error message
             // $updateMessage = "<p>Sorry $clientFirstname, but the registration failed. Please try again.</p>";
+            $_SESSION['messageData']['review'] = "There was a problem updating your review. Please try again."; //!! Message on what was updated
             // include '../view/user-management.php';
+            header('Location: /phpmotors/reviews/?action=review-edit&reviewId=' .$reviewId);
             exit;
         }
 
